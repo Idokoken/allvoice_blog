@@ -1,90 +1,52 @@
-
-    <nav className="navbar sticky-top navbar-expand-sm navbar-dark bg-primary">
-      <div className="container-fluid">
-        <a className="navbar-brand" href="/">
-          <img
-            src="/images/brand.png"
-            alt=""
-            width="30"
-            height="24"
-            className="d-inline-block align-text-top"
-          />
-          GRNews
-        </a>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarTogglerDemo02"
-          aria-controls="navbarTogglerDemo02"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-          <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/">
-                Home
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/about">
-                About
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/contact">
-                Contact
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/user/write">
-                Write
-              </NavLink>
-            </li>
-          </ul>
-          {user ? (
-            <>
-              <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li className="nav-item">
-                  <NavLink to="/user/settings" className="nav-link">
-                    {user.profilePix ? (
-                      <img
-                        className="profileimg"
-                        src={Pf + user.profilePix}
-                        alt="profile"
-                      />
-                    ) : (
-                      <img
-                        className="profileimg"
-                        src="/images/profile.png"
-                        alt="profile"
-                      />
-                    )}
-                  </NavLink>
-                </li>
-                <li className="nav-item logout" onClick={handleLogOut}>
-                  Logout
-                </li>
-              </ul>
-            </>
-          ) : (
-            <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <NavLink to="/auth/login" className="nav-link">
-                  Login
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink to="/auth/register" className="nav-link">
-                  Register
-                </NavLink>
-              </li>
-            </ul>
-          )}
-        </div>
-      </div>
-    </nav>
-  
+<div class="admin">
+  <div>
+    <a href="/auth/admin"><i class="fa-solid h-icon fa-user"></i>ADMIN</a>
+  </div>
+  <div>
+    <a href="/auth/register"><i class="fa-solid h-icon fa-book"></i>SIGN UP</a>
+  </div>
+  <div>
+    <a href="/auth/login"><i class="fa-solid h-icon fa-user"></i>SIGN IN</a>
+  </div>
+</div>
+<nav class="navbar navbar-expand-sm sticky-top navbar-primary bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      <img
+        src="/images/brand.jpg"
+        alt=""
+        width="30"
+        height="24"
+        class="d-inline-block align-text-top me-2"
+      />
+      AllVoice
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarTogglerDemo02"
+      aria-controls="navbarTogglerDemo02"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/post">All Posts</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/post">Contact Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about">About Us</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

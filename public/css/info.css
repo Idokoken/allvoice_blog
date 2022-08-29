@@ -1,0 +1,55 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+main .post .author-info {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(179, 157, 157);
+  margin-bottom: 0;
+  border: 5px solid #000;
+}
+main .post .author-info .name {
+  margin: 10px;
+  margin-top: 0;
+}
+main .post .author-info .name h4,
+main .post .author-info .name h5,
+main .post .author-info .name p {
+  margin: 2px;
+}
+main .post .author-info .name h4 {
+  color: rgb(57, 56, 90);
+}
+
+main .post .author-info .name img {
+  height: 50px;
+  width: 50px;
+  border-radius: 10px;
+  border: 2px solid #000;
+  margin-top: 0;
+}
+
+/* for medium screen */
+@media only screen and (min-width: 768px) {
+  main .post .author-info {
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(179, 157, 157);
+    margin-bottom: 0;
+    border: 5px solid #000;
+    width: 40%;
+  }
+  main .post .author-info .name img {
+    height: 100px;
+    width: 100px;
+    border-radius: 10px;
+    border: 2px solid #000;
+    margin-top: 0;
+  }
+}

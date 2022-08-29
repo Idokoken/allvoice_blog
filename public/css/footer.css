@@ -1,0 +1,77 @@
+/* footer section */
+footer{
+	margin: 0;
+	padding: 0;
+	margin-top: 20px;
+}
+.footer{
+ background-color: black;
+ color: white;
+ display: flex;
+ flex-direction: column;
+ width: 100%;
+ 
+}
+.footer .item1 h3{
+	color:rgb(73, 6, 62);
+}
+.footer .item1{
+	display: flex;
+	align-items: center;
+	margin: 10px;
+	margin-left: 20px;
+}
+
+hr {
+	width: 100%;
+	border: 2px solid white;
+}
+
+.footerLogo {
+	display: flex;
+	margin-top: 20px;
+	align-items: center;
+}
+.footer img{
+	margin-right: 10px;
+	height: 40px;
+	width: 40px;
+
+}
+.footer .footericon-container{
+	display: flex;
+	
+}
+.footer .icon{	
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-right: 20px;
+	border: 1px solid white;
+	width: 30px;
+	height: 30px;
+}
+
+.footer ul{
+	list-style-type: none;
+	margin-left: 20px;
+	padding: 0;
+}
+.footer ul li a:hover{
+	color: rgb(177, 211, 84);
+	}
+.footer ul li{
+    margin-top: 5px;
+}
+.footer a{
+	text-decoration: none;
+	color: inherit;
+	margin-top: 10px;
+}
+.footer .item2 h4{
+    margin-bottom: 20px;
+}
+
+.footer .item2{
+    margin-left: 20px;
+}

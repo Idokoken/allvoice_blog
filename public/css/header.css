@@ -1,0 +1,46 @@
+.admin{
+    display: flex;
+    background-color: rgb(78, 59, 97);
+    color: white;
+    justify-content: flex-end;
+    padding-right: 20px;
+}
+.h-icon{
+    padding-right: 5px;
+}
+.admin div{
+    margin: 5px;
+}
+.admin div a{
+    text-decoration: none;
+    color: inherit;
+    font-size: 10px;
+    font-weight: 500;
+}
+.admin div a:hover{
+color: rgb(177, 211, 84);
+}
+.bg-light{
+    background-color: white !important;
+    /* background-image: linear-gradient(to right, blue, rgb(155, 170, 240), blue) !important; */
+    box-shadow: 5px 10px 8px 10px #eee6e6;
+    
+}
+.nav-link, .navbar-brand{
+  color:rgb(73, 6, 62);
+  font-weight: 600;
+}
+.nav-link:hover{
+    color: rgb(177, 211, 84);
+    }
+
+/* for medium screen */
+@media only screen and (min-width: 768px) {
+    .admin div{
+        margin: 10px;
+    }
+    .admin div a{
+        font-size: 14px;
+    }
+
+}

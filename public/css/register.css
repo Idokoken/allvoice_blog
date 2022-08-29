@@ -1,0 +1,36 @@
+body{
+	margin: 0;
+	padding: 0;
+	
+	background: #C1B5B5;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	width: 100vh;
+}
+form{
+	padding: 20px;
+}
+
+.register {
+	width:80%;
+ height: 500px;
+}
+.main {
+	width: 90%;
+	background: #B5B9B9;
+}
+h1{
+	font-weight: 500;
+	font-size: 30px;
+	
+}
+h3{
+	font-style: oblique;
+}
+a{
+	text-decoration: none;
+	color: #415A8A;
+	font-size: 20px;
+}
