@@ -34,12 +34,12 @@ main .home .post1{
    
 }
 main .home .post1 .content{
-  height: 40%;
+  height: 300px;
   width: 100%;
   position: relative;
 }
 main .home .post1 .content img{
-   object-fit: contain;
+   object-fit: cover;
    height: 100%;
    width: 100%;
 }
@@ -49,21 +49,21 @@ main .home .post1 .content h3{
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
+  border: 1px solid red;
 }
-main .home .post1 .content .name{
+main .home .post1 .content a .name{
   position: absolute;
   bottom: 50px;
   left: 50px;
   display: flex;
   color: white;
 }
-main .home .post1 .content .name p{
+main .home .post1 .content a .name p{
   margin-right: 30px;
 }
 main .home .post2{
   display: flex;
   flex-direction: column;
-
 }
 main .home .post2 .content{
   box-shadow:  5px 10px 8px 10px #eee6e6;
@@ -95,32 +95,103 @@ main .home .post2 .content a .title .name P{
   color: blue;
   margin-right: 10px;
 }
+/* all posts page */
+main .allposts .post2 .content{
+  box-shadow:  5px 10px 8px 10px #eee6e6;
+  margin-bottom: 12px;
+}
+main .allposts .post2 .content a{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 20px;
+  padding: 0;
+  text-decoration: none;
+  color: black;
+}
 
+main .allposts .post2 .content a img{
+  flex: 33%;;
+  width: 100px;
+  height: 100px;  
+}
+main .allposts .post2 .content a .title{
+  flex: 66%;
+  padding: 10px;
+} 
+main .allposts .post2 .content a .title .name{
+  display: flex;
+}
+main .allposts .post2 .content a .title .name P{
+  color: blue;
+  margin-right: 10px;
+}
+
+/* single post page */
+main .singlepost{
+  padding: 10px;
+}
+main .singlepost .postImg{
+  height: 400px;
+  width: 80%;
+  display: block;
+  margin: auto;
+  object-fit: cover;
+}
+main .singlepost h2{
+  font-weight: 600;
+  color:rgb(73, 6, 62);
+}
 
 /* for medium screen */
 @media only screen and (min-width: 768px) {
   /* main section */
   main .home .post1{
-    display: flex;
     flex-direction: row;
-    width: 50%;
+    flex-wrap: wrap;
+ }
+ main .home .post1 .content{
+  /* flex: 50%; */
+  width: 50%;
+  height: 400px;
  }
  main .home .post2{
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   
 }
 main .home .post2 .content{
-
+  width: 50%;
 }
 
+/* all posts page */
+main .allposts .post2{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; 
+}
+main .allposts .post2 .content{
+  flex: 50%;
+  width: 50%;
   
 }
-
-
-/* for medium screen */
+}
   
   /* for large screen */
 @media only screen and (min-width: 1024px) {
+  /* home page */
+  main .home .post2 .content{
+    width: 33%;
     
+  }
+    /* all posts page */
+main .allposts .post2{
+  display: flex;
+  flex-direction: row; 
+}
+main .allposts .post2 .content{
+  width: 33%;
+  flex: 33%;
+}
     } 

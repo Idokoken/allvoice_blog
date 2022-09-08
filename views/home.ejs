@@ -1,30 +1,34 @@
 <div class="home">
   <h2>Latest Posts</h2>
   <section class="post1">
+    <% posts.filter((a, i) => i < 2).map((post, i) => {%>
     <div class="content">
-      <a href="post1.html" class="read">
-        <img src="/items/project1.jpg" alt="item1" class="item-img" />
-        <h3>How to prepare Nigeria fried Rice</h3>
+      <a href="/post/<%= post._id %> " class="read">
+        <img src="<%= post.cover %> " alt="cover" class="item-img" />
+        <h3><%= post.title %></h3>
         <div class="name">
-          <p>Author</p>
+          <p><%= post.author %></p>
           <span>july 3, 2021</span>
         </div>
       </a>
     </div>
+    <%}) %>
   </section>
   <h2>Featured Posts</h2>
   <section class="post2">
+    <% posts.filter((a, i) => i >= 2 && i <= 5).map((post, i) => {%>
     <div class="content">
-      <a href="post1.html" class="read">
-        <img src="/items/project2.jpg" alt="item1" class="item-img" />
+      <a href="<%= post._id %> " class="read">
+        <img src="<%= post.cover %> " alt="cover" class="item-img" />
         <div class="title">
-          <h4>How to prepare Nigeria fried Rice</h4>
+          <h4><%= post.title %></h4>
           <div class="name">
-            <p>Author</p>
+            <p><%= post.author %></p>
             <span>- July 3, 2021</span>
           </div>
         </div>
       </a>
     </div>
+    <% }) %>
   </section>
 </div>

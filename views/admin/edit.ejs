@@ -1,0 +1,103 @@
+<div class="">
+    <h1 class="text-darks">Update Album</h1>
+    <form action="/albums/edit/<%= album._id %> " method="post" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input
+          type="text"
+          name="name"
+          value="<%= album.name %>"
+          placeholder="genre name"
+          class="form-control"
+        />
+      </div>
+      <div class="form-group">
+          <label for="artist">Artist</label>
+          <input
+            type="text"
+            name="artist"
+            value="<%= album.artist %>"
+            placeholder="artist name"
+            class="form-control"
+          />
+        </div>
+        <div class="form-group">
+          <label for="title">Album title</label>
+          <input
+            type="text"
+            name="title"
+            value="<%= album.title %>"
+            placeholder="album title"
+            class="form-control"
+          />
+        </div>
+        
+        <div class="form-group">
+          <label for="artist">Genre</label>
+          <select name="genre" id=""  class="form-control">
+              <% for( let i = 0; i <genre.length; i++ ) { %>
+              <option value='<%= genre[i].name %>'><%= genre[i].name %></option>
+              <% } %>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="info">Album Info</label>
+          <textarea type="text"
+          name="info"
+          value="<%= album.info %>"
+          placeholder="album info"
+          class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="year">Release year</label>
+          <input
+            type="text"
+            name="year"
+            value="<%= album.year %>"
+            placeholder="release year"
+            class="form-control"
+          />
+        </div>
+        <div class="form-group">
+          <label for="label">Record label</label>
+          <input
+            type="text"
+            name="label"
+            value="<%= album.label %>"
+            placeholder="record label"
+            class="form-control"
+          />
+        </div>
+        <div class="form-group">
+          <label for="name">Number of tracks</label>
+          <input
+            type="number"
+            name="tracks"
+            value="<%= album.tracks %>"
+            class="form-control"
+          />
+        </div>
+        <div class="form-group">
+          <label for="cover">Album cover</label>
+          <input
+            type="file"
+            name="cover"
+            placeholder="album cover"
+            class="form-control"
+          />
+          <img src="/<%= album.cover %>" alt="cover" width="100">
+        </div>
+        <input
+            type="hidden"
+            name="old_image"
+            value="<%= album.cover %>"
+            placeholder="album cover"
+            class="form-control"
+          />
+      <button type="submit" class="btn btn-secondary text-light mt-3">
+        Submit
+      </button>
+      <a href="/genres" class="btn btn-danger mt-2">Close</a>
+    </form>
+  </div>
+  

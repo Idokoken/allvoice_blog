@@ -12,6 +12,7 @@ const authRouter = require("./routes/authRouter");
 const userRouter = require("./routes/userRouter");
 const categoryRouter = require("./routes/categoryRouter");
 const postRouter = require("./routes/postRouter");
+const indexRouter = require("./routes/indexRouter");
 
 require("dotenv").config();
 
@@ -25,6 +26,7 @@ app.set("views", "views");
 app.set("layout", "layouts/layout");
 
 //database setup
+//MONGO_URI=mongodb+srv://Ken_apps:Ken_apps@cluster0.npcrm.mongodb.net/portfolio?retryWrites=true&w=majority
 mongoose.connect(process.env.MONGO_URI, {
   useUnifiedTopology: true,
   useNewUrlParser: true,
@@ -36,6 +38,8 @@ db.once("open", () =>
 );
 
 //middleware setup
+app.use(cors());
+app.use(morgan("dev"));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(
   "/css",
@@ -62,9 +66,10 @@ app.use((req, res, next) => {
 });
 
 //route setup
+app.use("/", indexRouter);
 app.use("/auth", authRouter);
 app.use("/user", userRouter);
 app.use("/category", categoryRouter);
-app.use("/", postRouter);
+app.use("/post", postRouter);
 
 app.listen(port, () => console.log("listening on port " + chalk.cyan(4000)));

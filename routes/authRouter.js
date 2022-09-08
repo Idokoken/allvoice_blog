@@ -11,6 +11,9 @@ const authRouter = express.Router();
 //register
 authRouter
   .route("/register")
+  .get((req, res) => {
+    res.render("pages/register", { layout: false });
+  })
   .post(async (req, res) => {
     const { username, email, password } = req.body;
 
@@ -25,14 +28,14 @@ authRouter
     } catch (error) {
       res.status(500).json(error);
     }
-  })
-  .get((req, res) => {
-    res.status(200).send("register page");
   });
 
 //login
 authRouter
   .route("/login")
+  .get((req, res) => {
+    res.render("pages/login", { layout: false });
+  })
   .post(async (req, res) => {
     const { email, password } = req.body;
 
@@ -58,9 +61,11 @@ authRouter
     } catch (error) {
       res.status(500).json(error);
     }
-  })
-  .get((req, res) => {
-    res.status(200).send("login page");
   });
+
+authRouter.post("/logout", function (req, res, next) {
+  req.logout();
+  res.redirect("/");
+});
 
 module.exports = authRouter;

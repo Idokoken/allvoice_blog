@@ -7,17 +7,17 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-main .post .social {
+main .singlepost .social {
   margin-bottom: 2px;
 }
 
-main .post .social img {
+main .singlepost .social img {
   height: 30px;
   width: 30px;
   border-radius: 50%;
   margin: 0 15px;
 }
-main .post .social h4 {
+main .singlepost .social h4 {
   margin: 0;
   color: rgb(128, 69, 69);
 }
