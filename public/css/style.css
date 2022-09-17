@@ -16,12 +16,15 @@ body {
 /* main section */
 main {
   min-height: 70vh;
+  margin: 0;
+  padding: 0;
 }
 
 main .home {
  padding: 0;
  margin: 20px 0;
 }
+
 main .home h2{
   font-weight: bold;
   font-family: 'Times New Roman', Times, serif;
@@ -49,7 +52,6 @@ main .home .post1 .content h3{
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
-  border: 1px solid red;
 }
 main .home .post1 .content a .name{
   position: absolute;
@@ -141,6 +143,19 @@ main .singlepost .postImg{
 main .singlepost h2{
   font-weight: 600;
   color:rgb(73, 6, 62);
+}
+
+/* flash messages */
+h4 ul{
+	list-style-type: none;
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+	}
+h4 ul li{
+	color: green;
+  font-weight: 500;
 }
 
 /* for medium screen */

@@ -1,0 +1,21 @@
+<div
+  class="container-fluid py-4 my-0 text-white bg-dark"
+  style="min-height: 70vh"
+>
+  <div class="container">
+    <h1 class="text-dark">Add Genres</h1>
+    <form action="/category/create" method="post">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input
+          type="text"
+          name="name"
+          placeholder="genre name"
+          class="form-control"
+        />
+      </div>
+      <button type="submit" class="btn btn-info text-light mt-2">Submit</button>
+    </form>
+    <a href="/post/admin" class="btn btn-danger mt-4">Close</a>
+  </div>
+</div>

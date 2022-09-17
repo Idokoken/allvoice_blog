@@ -12,7 +12,12 @@
   </head>
   <body>
     <header><%- include ('../partials/header'); %></header>
-    <main><%- body %></main>
+
+    <main>
+      <% if (messages) { %>
+      <h4><%- messages() %></h4>
+      <% } %> <%- body %>
+    </main>
     <footer><%- include ('../partials/footer'); %></footer>
 
     <!-- javascript -->

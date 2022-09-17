@@ -23,7 +23,7 @@ color: rgb(177, 211, 84);
 .bg-light{
     background-color: white !important;
     /* background-image: linear-gradient(to right, blue, rgb(155, 170, 240), blue) !important; */
-    box-shadow: 5px 10px 8px 10px #eee6e6;
+    box-shadow: 5px 5px 5px 5px #eee6e6;
     
 }
 .nav-link, .navbar-brand{
