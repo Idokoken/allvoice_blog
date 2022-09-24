@@ -21,7 +21,7 @@ indexRouter.get("/", async (req, res) => {
       posts = await Post.find();
     }
 
-    res.render("home", { posts: data });
+    res.render("home", { posts });
   } catch (err) {
     res.status(500).json(err);
   }

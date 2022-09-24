@@ -2,11 +2,13 @@ const express = require("express");
 const User = require("../models/userModel");
 const CryptoJS = require("crypto-js");
 const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs");
 
 const authRouter = express.Router();
 
 //var encrypted = CryptoJS.AES.encrypt("Message", "Secret Passphrase");
 //var decrypted = CryptoJS.AES.decrypt(encrypted, "Secret Passphrase");
+//CryptoJS.AES.encrypt(password, process.env.PASS_SEC).toString()
 
 //register
 authRouter
@@ -17,18 +19,29 @@ authRouter
   .post(async (req, res) => {
     const { username, email, password } = req.body;
 
+    var salt = bcrypt.genSaltSync(10);
+    var hashedPassword = bcrypt.hashSync(password, salt);
+    // Store hash in your password DB.
+
     const newUser = new User({
       username,
       email,
-      password: CryptoJS.AES.encrypt(password, keys.PASS_SEC).toString(),
+      password: hashedPassword,
     });
     try {
       const user = await newUser.save();
-      res.status(200).json(user);
+      res.redirect("/auth/login");
+      console.log(newUser);
     } catch (error) {
       res.status(500).json(error);
     }
   });
+
+// userSchema.methods.createJWT = function () {
+//   return jwt.sign({ userId: this._id }, process.env.JWT_SECRET, {
+//     expiresIn: process.env.JWT_LIFETIME,
+//   });
+// };
 
 //login
 authRouter
@@ -42,20 +55,16 @@ authRouter
     try {
       const user = await User.findOne({ email });
       !user && res.status(401).json("invalid cridentials");
-      const userPassword = CryptoJS.AES.decrypt(
-        user.password,
-        process.env.PASS_SEC
-      ).toString(CryptoJS.enc.Utf8);
 
-      userPassword !== password && res.status(401).json("invalid cridentials");
+      const userPassword = await bcrypt.compare(password, user.password);
 
-      // const token = jwt.sign(
-      //   { id: user._id, isAdmin: user.isAdmin },
-      //   keys.JWT_SECRET,
-      //   { expiresIn: "3d" }
-      // );
+      !userPassword && res.status(401).json("invalid cridentials");
 
-      //const{password, ...others} = user._doc
+      const token = jwt.sign(
+        { id: user._id, isAdmin: user.isAdmin },
+        process.env.JWT_SECRET,
+        { expiresIn: "3d" }
+      );
 
       res.status(200).json({ user, token });
     } catch (error) {
@@ -63,8 +72,9 @@ authRouter
     }
   });
 
-authRouter.post("/logout", function (req, res, next) {
+authRouter.post("/logout", (req, res) => {
   req.logout();
+  // req.session.destroy()
   res.redirect("/");
 });
 

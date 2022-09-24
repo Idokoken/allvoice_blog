@@ -26,7 +26,7 @@ app.set("views", "views");
 app.set("layout", "layouts/layout");
 
 //database setup
-mongoose.connect(process.env.MONGO_URI, {
+mongoose.connect("mongodb://localhost/allvoice", {
   useUnifiedTopology: true,
   useNewUrlParser: true,
 });
@@ -63,6 +63,7 @@ app.use((req, res, next) => {
   res.locals.messages = require("express-messages")(req, res);
   next();
 });
+global.moment = require("moment");
 
 //route setup
 app.use("/", indexRouter);

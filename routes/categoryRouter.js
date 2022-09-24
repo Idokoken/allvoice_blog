@@ -22,30 +22,50 @@ categoryRouter
   });
 
 // edit category
-categoryRouter
-  .route("/edit/:id")
-  .get(async (req, res) => {
-    try {
-      const category = await Category.findById(req.params.id);
-      res.render("category/edit", { category });
-    } catch (error) {
-      res.status(500).json(error);
+categoryRouter.get("/edit/:id", async (req, res) => {
+  try {
+    const category = await Category.findById(req.params.id);
+    res.render("category/edit", { category });
+    console.log(category);
+    res.json(category);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
+/*
+categoryRouter.post("/edit/:id", async (req, res) => {
+  const { id } = req.params.id;
+  const { name } = req.body;
+  try {
+    await Category.findByIdAndUpdate(id, { name });
+    //req.flash("info", "category successfully updated");
+    //res.redirect("/post/admin");
+  } catch (error) {
+    res.status(500).json(error);
+    //res.redirect("/category/create");
+  }
+});
+*/
+categoryRouter.post("/edit/:id", (req, res) => {
+  //const { name } = req.body;
+  Category.findByIdAndUpdate(
+    req.params.id,
+    { $set: req.body },
+    { new: true },
+    (err, data) => {
+      if (err) {
+        res.status(500).json(err);
+      } else {
+        res.redirect("/post/admin");
+        console.log(data);
+      }
     }
-  })
-  .post(async (req, res) => {
-    const { id } = req.params.id;
-    try {
-      await Category.findByIdAndUpdate(id, { $set: req.body }, { new: true });
-      req.flash("info", "category successfully updated");
-      res.redirect("/post/admin");
-    } catch (error) {
-      //res.status(500).json(error);
-      res.redirect("/category/create");
-    }
-  });
+  );
+});
 
 // delete category
-categoryRouter.get("delete/:id", async (req, res) => {
+categoryRouter.get("/delete/:id", async (req, res) => {
   try {
     await Category.findByIdAndDelete(req.params.id);
     req.flash("info", "category successfully deleted");

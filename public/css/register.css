@@ -1,26 +1,30 @@
 body{
 	margin: 0;
 	padding: 0;
-	
-	background: #C1B5B5;
+	height: 100%;
+	width: 100%;
 	display: flex;
-	align-items: center;
 	justify-content: center;
-	height: 100vh;
-	width: 100vh;
+	align-items: center;
 }
+
+.main {
+	width: 50%;
+	background: #4fc98c;
+	color: white;
+	align-self: center;
+	padding: 20px;
+	border-radius: 20px;
+}
+
 form{
 	padding: 20px;
 }
-
 .register {
 	width:80%;
  height: 500px;
 }
-.main {
-	width: 90%;
-	background: #B5B9B9;
-}
+
 h1{
 	font-weight: 500;
 	font-size: 30px;
