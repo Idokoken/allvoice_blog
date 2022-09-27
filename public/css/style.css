@@ -153,8 +153,12 @@ h4 ul{
   justify-content: center;
   align-self: center;
 	}
-h4 ul li{
+h4 .info li{
 	color: green;
+  font-weight: 500;
+}
+h4 .error li{
+	color: rgb(179, 54, 54);
   font-weight: 500;
 }
 

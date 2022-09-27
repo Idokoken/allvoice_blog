@@ -1,21 +1,11 @@
 const express = require("express");
 const User = require("../models/userModel");
-const {
-  verifyToken,
-  verifyTokenAndAuth,
-  verifyTokenAndAdmin,
-} = require("./verifyToken");
-const CryptoJS = require("crypto-js");
+const bcrypt = require("bcryptjs");
+const { verifyToken, verifyTokenAndAdmin } = require("./verifyToken");
 
 const userRouter = express.Router();
 
-userRouter.put("/:id", verifyTokenAndAuth, async (req, res) => {
-  if (req.body.password) {
-    req.body.password = CryptoJS.AES.encrypt(
-      req.body.password,
-      process.env.PASS_SEC
-    ).toString();
-  }
+userRouter.post("/:id", verifyTokenAndAdmin, async (req, res) => {
   try {
     const updatedUser = await User.findByIdAndUpdate(
       req.params.id,
@@ -28,7 +18,7 @@ userRouter.put("/:id", verifyTokenAndAuth, async (req, res) => {
   }
 });
 // delete call
-userRouter.delete("/:id", verifyTokenAndAuth, async (req, res) => {
+userRouter.delete("/:id", verifyTokenAndAdmin, async (req, res) => {
   try {
     await User.findByIdAndDelete(req.params.id);
     res.status(200).json("user deleted");
@@ -49,43 +39,11 @@ userRouter.get("/find/:id", verifyTokenAndAdmin, async (req, res) => {
 
 //get all
 userRouter.get("/", verifyTokenAndAdmin, async (req, res) => {
-  const query = req.query.new;
   try {
-    const users = query
-      ? await User.find().sort({ _id: -1 }).limit(1)
-      : await User.find();
+    const user = await User.find();
     res.status(200).json(users);
   } catch (err) {
     res.status(500).json("you are not an admin");
-  }
-});
-
-//get user stats
-userRouter.get("/stat", async (req, res) => {
-  const date = new Date();
-  const lastYear = new Date(date.setFullYear(date.getFullYear() - 1));
-  try {
-    const data = await User.aggregate([
-      {
-        $match: {
-          createdAt: { $gte: lastYear },
-        },
-      },
-      {
-        $product: {
-          month: { $month: "$createdAt" },
-        },
-      },
-      {
-        $group: {
-          _id: "$month",
-          total: { $sum: 1 },
-        },
-      },
-    ]);
-    res.status(200).json(data);
-  } catch (err) {
-    res.status(500).json(err);
   }
 });
 

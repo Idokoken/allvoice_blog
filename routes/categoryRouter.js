@@ -13,7 +13,7 @@ categoryRouter
     const newCategory = new Category(req.body);
     try {
       const category = await newCategory.save();
-      req.flash("success", "Category successfully created");
+      req.flash("info", "Category successfully created");
       res.redirect("/post/admin");
     } catch (err) {
       //res.status(500).json(err);
@@ -57,7 +57,9 @@ categoryRouter.post("/edit/:id", (req, res) => {
       if (err) {
         res.status(500).json(err);
       } else {
+        req.flash("info", "Category successfully updated");
         res.redirect("/post/admin");
+
         console.log(data);
       }
     }
@@ -68,7 +70,7 @@ categoryRouter.post("/edit/:id", (req, res) => {
 categoryRouter.get("/delete/:id", async (req, res) => {
   try {
     await Category.findByIdAndDelete(req.params.id);
-    req.flash("info", "category successfully deleted");
+    req.flash("error", "category successfully deleted");
     res.redirect("/post/admin");
   } catch (error) {
     res.redirect("/post/admin");

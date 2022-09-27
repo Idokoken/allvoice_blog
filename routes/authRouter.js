@@ -1,26 +1,27 @@
 const express = require("express");
 const User = require("../models/userModel");
-const CryptoJS = require("crypto-js");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
 const authRouter = express.Router();
 
-//var encrypted = CryptoJS.AES.encrypt("Message", "Secret Passphrase");
-//var decrypted = CryptoJS.AES.decrypt(encrypted, "Secret Passphrase");
-//CryptoJS.AES.encrypt(password, process.env.PASS_SEC).toString()
-
 //register
 authRouter
   .route("/register")
   .get((req, res) => {
-    res.render("pages/register", { layout: false });
+    res.render("pages/register", { layout: "layouts/register" });
   })
   .post(async (req, res) => {
     const { username, email, password } = req.body;
 
-    var salt = bcrypt.genSaltSync(10);
-    var hashedPassword = bcrypt.hashSync(password, salt);
+    if (!username || !email || !password) {
+      req.flash("error", "All fields must be filled");
+      res.render("pages/register", {
+        layout: "layouts/register",
+      });
+    }
+    let salt = bcrypt.genSaltSync(10);
+    let hashedPassword = bcrypt.hashSync(password, salt);
     // Store hash in your password DB.
 
     const newUser = new User({
@@ -31,7 +32,7 @@ authRouter
     try {
       const user = await newUser.save();
       res.redirect("/auth/login");
-      console.log(newUser);
+      console.log(user);
     } catch (error) {
       res.status(500).json(error);
     }
@@ -47,18 +48,28 @@ authRouter
 authRouter
   .route("/login")
   .get((req, res) => {
-    res.render("pages/login", { layout: false });
+    res.render("pages/login", { layout: "layouts/register" });
   })
   .post(async (req, res) => {
     const { email, password } = req.body;
 
     try {
+      if (!email || !password) {
+        req.flash("error", "All fields are required");
+        res.render("pages/login", { layout: "layouts/register" });
+      }
+
       const user = await User.findOne({ email });
-      !user && res.status(401).json("invalid cridentials");
+      if (!user) {
+        req.flash("error", "invalid cridentials");
+        res.render("pages/login", { layout: "layouts/register" });
+      }
 
       const userPassword = await bcrypt.compare(password, user.password);
-
-      !userPassword && res.status(401).json("invalid cridentials");
+      if (!userPassword) {
+        req.flash("error", "invalid cridentials");
+        res.render("pages/login", { layout: "layouts/register" });
+      }
 
       const token = jwt.sign(
         { id: user._id, isAdmin: user.isAdmin },
@@ -66,7 +77,8 @@ authRouter
         { expiresIn: "3d" }
       );
 
-      res.status(200).json({ user, token });
+      // res.status(200).json({ user, token });
+      res.redirect("/");
     } catch (error) {
       res.status(500).json(error);
     }

@@ -3,11 +3,17 @@ body{
 	padding: 0;
 	height: 100%;
 	width: 100%;
+	
+}
+main{
+height: 100vh;
+}
+.contains{
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	flex-direction: column;
 }
-
 .main {
 	width: 50%;
 	background: #4fc98c;
@@ -37,4 +43,21 @@ a{
 	text-decoration: none;
 	color: #415A8A;
 	font-size: 20px;
+}
+
+/* flash messages */
+h4 ul{
+	list-style-type: none;
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+	}
+h4 .info li{
+	color: green;
+  font-weight: 500;
+}
+h4 .error li{
+	color: rgb(179, 54, 54);
+  font-weight: 500;
 }

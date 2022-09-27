@@ -56,8 +56,10 @@ app.use(
     secret: "secret",
     saveUninitialized: true,
     resave: true,
+    cookie: { maxAge: 60000 },
   })
 );
+//app.use(express.session({ cookie: { maxAge: 60000 }}));
 app.use(flash());
 app.use((req, res, next) => {
   res.locals.messages = require("express-messages")(req, res);
