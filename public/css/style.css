@@ -97,6 +97,15 @@ main .home .post2 .content a .title .name P{
   color: blue;
   margin-right: 10px;
 }
+
+/* admin page */
+.adminpage table tr td{
+  font-size: 0.8rem;
+}
+.adminpage img{
+  height: 40px;
+  width: 40px;
+}
 /* all posts page */
 main .allposts .post2 .content{
   box-shadow:  5px 10px 8px 10px #eee6e6;
@@ -161,6 +170,60 @@ h4 .error li{
 	color: rgb(179, 54, 54);
   font-weight: 500;
 }
+/* contact page */
+.contact{
+  background-color: rgba(167, 156, 142, 0.6);
+  margin: 0;
+  padding: 0;
+}
+.contact .phone{
+  display: flex;
+  align-items: center;
+}
+.contact .phone img{
+  border-radius: 50%;
+  margin: 0 5px;
+}
+.contact label{
+  color:rgb(73, 6, 62);
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 600;
+}
+.contact h2, .contact h3{
+  color:rgb(73, 6, 62);
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 600;
+}
+.contact button{
+  background-color:rgb(73, 6, 62);
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 600;
+  color: white;
+}
+.contact a{
+  text-decoration: none;
+  color: rgb(57, 136, 209);
+  font-size: 18px;
+  margin-left: 10px;
+}
+.contact a:hover{
+  color: rgb(177, 211, 84);
+  font-weight: 600;
+}
+
+/* about page */
+.about h3{
+  margin-top: 30px;
+  margin-bottom: 5px;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 600;
+  color: rgb(73, 6, 62);
+}
+.about p{
+  font-family: 'Times New Roman', Times, serif sans-serif;
+  line-height: 1.6;
+  
+}
 
 /* for medium screen */
 @media only screen and (min-width: 768px) {
@@ -212,5 +275,9 @@ main .allposts .post2{
 main .allposts .post2 .content{
   width: 33%;
   flex: 33%;
+}
+/* admin page */
+.adminpage table tr td{
+  font-size: 1rem;
 }
     } 

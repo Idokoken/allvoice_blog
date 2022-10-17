@@ -9,7 +9,7 @@
     </div>
   </div>
   <h3 class="text-info mt-4 mb-2">News Posts</h3>
-  <table class="table table-dark table-striped">
+  <table class="table table-dark table-striped post">
     <thead>
       <tr>
         <th scope="col">Cover</th>
@@ -22,10 +22,10 @@
     <tbody>
       <% for( let i = 0; i < posts.length; i++ ) { %>
       <tr>
-        <th scope="row"><%= posts[i].cover %></th>
+        <th scope="row"><img src="<%= posts[i].cover %>" alt="cover"></th>
         <td colspan="2"><%= posts[i].title %></td>
         <td>
-          <a class="btn btn-secondary" href="/post/edit/<%= posts[i]._id %>"
+          <a class="btn btn-secondary" href="/post/update/<%= posts[i]._id %>"
             ><i class="fa-regular fa-pen-to-square"></i
           ></a>
         </td>
@@ -34,7 +34,7 @@
             ><i class="fa-solid fa-trash-can"></i
           ></a>
         </td>
-        <td><%=moment(posts[i].createdAt).format('Do-MMM-YYYY')%></td>
+        <td ><%=moment(posts[i].createdAt).format('DD MMM YY')%></td>
       </tr>
       <% } %>
     </tbody>
@@ -64,7 +64,7 @@
             ><i class="fa-solid fa-trash-can"></i
           ></a>
         </td>
-        <td><%=moment(category[i].createdAt).format('Do-MMM-YYYY')%></td>
+        <td><%=moment(category[i].createdAt).format('DD MMM YY')%></td>
       </tr>
       <% } %>
     </tbody>

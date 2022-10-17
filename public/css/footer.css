@@ -3,6 +3,7 @@ footer{
 	margin: 0;
 	padding: 0;
 	margin-top: 20px;
+	font-family: 'Times New Roman', Times, serif;
 }
 .footer{
  background-color: black;
@@ -39,8 +40,7 @@ hr {
 
 }
 .footer .footericon-container{
-	display: flex;
-	
+	display: flex;	
 }
 .footer .icon{	
 	display: flex;

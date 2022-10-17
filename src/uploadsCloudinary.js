@@ -2,6 +2,8 @@ const cloudinary = require("cloudinary").v2;
 const { CloudinaryStorage } = require("multer-storage-cloudinary");
 const multer = require("multer");
 
+require("dotenv").config();
+
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
   api_key: process.env.API_KEY,
@@ -13,7 +15,7 @@ const storage = new CloudinaryStorage({
   params: {
     folder: "allvoiceBlog",
     format: async (req, file) => "png", // supports promises as well
-    public_id: (req, file) => "cover-image",
+    // public_id: (req, file) => "cover-image",
   },
 });
 

@@ -1,49 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;900&display=swap');
+
+input {
+	caret-color: red;
+  }
+
 body{
 	margin: 0;
 	padding: 0;
-	height: 100%;
-	width: 100%;
-	
-}
-main{
-height: 100vh;
-}
-.contains{
+	height: 100vh;
+	width: 100vw;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	flex-direction: column;
-}
-.main {
-	width: 50%;
-	background: #4fc98c;
-	color: white;
-	align-self: center;
-	padding: 20px;
-	border-radius: 20px;
-}
-
-form{
-	padding: 20px;
+	flex-direction: column;	
+	color:rgb(73, 6, 62);
+	background-color: #ecf0f3;
+	place-items: center;
+  overflow: hidden;
+  font-family: poppins;
 }
 .register {
-	width:80%;
- height: 500px;
+	position: relative;
+  width: 350px;
+  height: 600px;
+  border-radius: 20px;
+  padding: 20px 30px;
+  box-sizing: border-box;
+  background: #ecf0f3;
+  box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
 }
 
+.brand-logo {
+  height: 70px;
+  width: 70px;
+  /* background: url("https://img.icons8.com/color/100/000000/twitter--v2.png"); */
+  margin: auto;
+  border-radius: 50%;
+  box-sizing: border-box;
+  box-shadow: 7px 7px 10px #cbced1, -7px -7px 10px white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.brand-logo img{
+height: 100%;
+width: 100%;
+}
+
+.brand-title {
+  margin-top: 7px;
+  font-weight: 900;
+  font-size: 1.8rem;
+  color: rgb(73, 6, 62);
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.inputs {
+  text-align: left;
+  margin-top: 15px;
+}
+
+label, input, button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+}
+
+label {
+  margin-bottom: 2px;
+}
+
+label:nth-of-type(2) {
+  margin-top: 12px;
+}
+
+input::placeholder {
+  color: gray;
+}
+
+input {
+  background: #ecf0f3;
+  padding: 10px;
+  padding-left: 20px;
+  height: 40px;
+  font-size: 14px;
+  border-radius: 50px;
+  box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
+}
+
+button {
+  color: white;
+  margin-top: 20px;
+  background: #1DA1F2;
+  height: 30px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 900;
+  box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px white;
+  transition: 0.5s;
+}
+
+button:hover {
+  box-shadow: none;
+}
+
+a {
+  position: absolute;
+  font-size: 15px;
+  text-decoration: none;
+  color: #1DA1F2;
+  border-radius: 10px;
+  /* padding: 2px; */
+  margin-left: 10px;
+}
+
+h3 {
+  font-size: 25px
+}
 h1{
-	font-weight: 500;
-	font-size: 30px;
-	
+  position: relative;
+  top: 0;
+  right: 0;
 }
-h3{
-	font-style: oblique;
-}
-a{
-	text-decoration: none;
-	color: #415A8A;
-	font-size: 20px;
-}
+/* main */
+
+
+
 
 /* flash messages */
 h4 ul{

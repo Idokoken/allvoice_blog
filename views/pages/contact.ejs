@@ -1,3 +1,44 @@
 <div class="contact">
-  <h4>Contact us</h4>
+  <div class="container py-3">
+    <section>
+      <h2>You can call our Office line</h2>
+      <p>Available 8.00 am to 5.00pm Mon - Sat</p>
+      <div class="phone">
+        <h3>Phone</h3>
+        <span>
+          <img src="/images/phone.jpg" alt="" height="40" width="40" />
+        </span>
+        <a
+          href="tel:#"
+          class="d-flex justify-content-center align-items-center"
+        >
+          <p>tel +23498200****</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="mt-4">
+      <h3>Email AllVoice Here</h3>
+      <form method="post" action="/contact">
+        <div class="mb-3">
+          <label class="form-label">Name</label>
+          <input type="text" class="form-control" name="name" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Email Address</label>
+          <input type="email" class="form-control" name="email" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Description</label>
+          <textarea
+            class="form-control"
+            name="description"
+            cols="20"
+            rows="5"
+          ></textarea>
+        </div>
+        <button type="submit" class="btn">Submit</button>
+      </form>
+    </section>
+  </div>
 </div>

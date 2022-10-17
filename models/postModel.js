@@ -7,7 +7,7 @@ const postSchema = new Schema(
     description: { type: String, required: true },
     author: { type: String, required: true },
     cover: { type: String },
-    categories: { type: String },
+    category: { type: String },
   },
   { timestamps: true }
 );

@@ -10,11 +10,10 @@
     <title>register</title>
   </head>
   <body>
-    <main>
-      <% if (messages) { %>
-      <h4><%- messages() %></h4>
-      <% } %> <%- body %>
-    </main>
+    <% if (messages) { %>
+    <h4><%- messages() %></h4>
+    <% } %> <%- body %>
+
     <!-- js setups -->
 
     <script src="/js/bootstrap.bundle.min.js"></script>
