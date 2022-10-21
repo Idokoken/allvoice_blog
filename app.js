@@ -26,7 +26,8 @@ app.set("views", "views");
 app.set("layout", "layouts/layout");
 
 //database setup
-mongoose.connect("mongodb://localhost/allvoice", {
+// "mongodb://localhost/allvoice"
+mongoose.connect(process.env.MONGO_URI, {
   useUnifiedTopology: true,
   useNewUrlParser: true,
 });
