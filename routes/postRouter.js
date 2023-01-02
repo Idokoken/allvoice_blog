@@ -3,11 +3,12 @@ const User = require("../models/userModel");
 const Post = require("../models/postModel");
 const Category = require("../models/categoryModel");
 const { upload } = require("../src/uploadsCloudinary");
+const { isLoggedIn } = require("../middleware/middleware");
 
 const postRouter = express();
 
 //get all post for posts page
-postRouter.get("/", async (req, res) => {
+postRouter.get("/", isLoggedIn, async (req, res) => {
   const username = req.query.user;
   const cat = req.query.cat;
   try {
@@ -20,30 +21,39 @@ postRouter.get("/", async (req, res) => {
     } else {
       posts = await Post.find();
     }
-    res.render("posts", { posts });
+    const user = req.user;
+    // res.json(posts);
+    res.render("posts", { posts, user });
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
 //get all post for admin page
-postRouter.get("/admin", async (req, res) => {
+postRouter.get("/admin", isLoggedIn, async (req, res) => {
   try {
     const category = await Category.find();
     const posts = await Post.find();
-    res.render("posts/index", { posts, category });
+    const user = req.user;
+    console.log(user.isAdmin);
+    if (user.isAdmin) {
+      res.render("posts/index", { posts, category, user });
+    } else {
+      res.redirect("/");
+    }
   } catch (err) {
-    res.status(500).json(err);
+    res.redirect("/");
   }
 });
 
 //create post
 postRouter
   .route("/create")
-  .get(async (req, res) => {
+  .get(isLoggedIn, async (req, res) => {
     try {
+      const user = req.user;
       const category = await Category.find();
-      res.render("posts/add", { category });
+      res.render("posts/add", { category, user });
     } catch (error) {
       res.status(500).json(error);
     }
@@ -70,11 +80,12 @@ postRouter
   });
 
 //get single post
-postRouter.get("/:id", async (req, res) => {
+postRouter.get("/:id", isLoggedIn, async (req, res) => {
   try {
+    const user = req.user;
     const post = await Post.findById(req.params.id);
     const author = await User.findOne({ username: post.author });
-    res.render("singlepost", { post });
+    res.render("singlepost", { post, user });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -83,11 +94,12 @@ postRouter.get("/:id", async (req, res) => {
 //update call
 postRouter
   .route("/update/:id")
-  .get(async (req, res) => {
+  .get(isLoggedIn, async (req, res) => {
+    const user = req.user;
     try {
       const category = await Category.find();
       const post = await Post.findById(req.params.id);
-      res.render("posts/edit", { post, category });
+      res.render("posts/edit", { post, category, user });
     } catch (error) {
       res.status(500).json({ error });
     }

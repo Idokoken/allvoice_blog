@@ -1,13 +1,15 @@
 const express = require("express");
 const User = require("../models/userModel");
 const Category = require("../models/categoryModel");
+const { isLoggedIn } = require("../middleware/middleware");
 
 const categoryRouter = express.Router();
 
 categoryRouter
   .route("/create")
-  .get((req, res) => {
-    res.render("category/add");
+  .get(isLoggedIn, (req, res) => {
+    const user = req.user;
+    res.render("category/add", { user });
   })
   .post(async (req, res) => {
     const newCategory = new Category(req.body);

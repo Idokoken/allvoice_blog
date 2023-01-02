@@ -2,6 +2,7 @@ const express = require("express");
 const User = require("../models/userModel");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
+const { isLoggedIn } = require("../middleware/middleware");
 
 const authRouter = express.Router();
 
@@ -74,9 +75,17 @@ authRouter
       const token = jwt.sign(
         { id: user._id, isAdmin: user.isAdmin },
         process.env.JWT_SECRET,
-        { expiresIn: "3d" }
+        { expiresIn: process.env.JWT_EXPIRES_IN }
       );
+      console.log("token is " + token);
 
+      const cookieOptions = {
+        expires: new Date(
+          Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000
+        ),
+        httpOnly: true,
+      };
+      res.cookie("jwt", token, cookieOptions);
       // res.status(200).json({ user, token });
       res.redirect("/");
     } catch (error) {
@@ -84,10 +93,12 @@ authRouter
     }
   });
 
-authRouter.post("/logout", (req, res) => {
-  req.logout();
-  // req.session.destroy()
-  res.redirect("/");
+authRouter.get("/logout", async (req, res) => {
+  res.cookie("jwt", "logout", {
+    expires: new Date(Date.now() + 2 * 1000),
+    httpOnly: true,
+  });
+  res.status(200).redirect("/");
 });
 
 module.exports = authRouter;

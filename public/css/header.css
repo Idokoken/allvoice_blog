@@ -4,6 +4,7 @@
     color: white;
     justify-content: flex-end;
     padding-right: 20px;
+    background-image: linear-gradient(to right, rgb(78, 59, 97), rgb(13, 128, 32),rgb(78, 59, 97),rgb(78, 59, 97));
 }
 .h-icon{
     padding-right: 5px;
@@ -16,6 +17,7 @@
     color: inherit;
     font-size: 10px;
     font-weight: 500;
+    
 }
 .admin div a:hover{
 color: rgb(177, 211, 84);
@@ -29,6 +31,7 @@ color: rgb(177, 211, 84);
 .nav-link, .navbar-brand{
   color:rgb(73, 6, 62);
   font-weight: 600;
+  font-family: 'Times New Roman', Times, serif;
 }
 .nav-link:hover{
     color: rgb(177, 211, 84);

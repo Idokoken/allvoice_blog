@@ -11,7 +11,75 @@
     <title>allvoice</title>
   </head>
   <body>
-    <header><%- include ('../partials/header'); %></header>
+    <header>
+      <div class="admin">
+        <% if (user && user.isAdmin) { %>
+        <div>
+          <a href="/post/admin"><i class="fa-solid h-icon fa-user"></i>Admin</a>
+        </div>
+        <div>
+          <a href="/auth/logout"><i class="h-icon"></i>Logout</a>
+        </div>
+        <% } else if (user) { %>
+        <div>
+          <a href="/auth/logout"><i class="h-icon"></i>Logout</a>
+        </div>
+        <% } else { %>
+        <div>
+          <a href="/auth/register"
+            ><i class="fa-solid h-icon fa-book"></i>Sign Up</a
+          >
+        </div>
+        <div>
+          <a href="/auth/login"
+            ><i class="fa-solid h-icon fa-user"></i>Sign In</a
+          >
+        </div>
+        <% } %>
+      </div>
+
+      <nav class="navbar navbar-expand-sm sticky-top navbar-primary bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/">
+            <img
+              src="/images/brand.png"
+              alt=""
+              width="30"
+              height="24"
+              class="d-inline-block align-text-top me-2"
+            />
+            AllVoice
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarTogglerDemo02"
+            aria-controls="navbarTogglerDemo02"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/post">All Posts</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/contact">Contact Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/about">About Us</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
 
     <main>
       <% if (messages) { %>

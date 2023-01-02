@@ -12,6 +12,23 @@ body {
   padding: 0;
 }
 
+/* flash messages */
+h4 ul{
+	list-style-type: none;
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+	}
+h4 .info li{
+	color: green;
+  font-weight: 500;
+}
+h4 .error li{
+	color: rgb(179, 54, 54);
+  font-weight: 500;
+}
+
 
 /* main section */
 main {
@@ -153,23 +170,16 @@ main .singlepost h2{
   font-weight: 600;
   color:rgb(73, 6, 62);
 }
+main .singlepost p{
+  line-height: 1.6;
+  text-indent: 50px;
+  font-family: 'Times New Roman', Times, serif;
+  /* letter-spacing: 5px; */
+  word-spacing: 5px;
+  font-size: 20px;
 
-/* flash messages */
-h4 ul{
-	list-style-type: none;
-  margin: 20px 0;
-  display: flex;
-  justify-content: center;
-  align-self: center;
-	}
-h4 .info li{
-	color: green;
-  font-weight: 500;
 }
-h4 .error li{
-	color: rgb(179, 54, 54);
-  font-weight: 500;
-}
+
 /* contact page */
 .contact{
   background-color: rgba(167, 156, 142, 0.6);
