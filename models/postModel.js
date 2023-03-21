@@ -8,6 +8,7 @@ const postSchema = new Schema(
     author: { type: String, required: true },
     cover: { type: String },
     category: { type: String },
+    isFeatured: { type: Boolean, default: false },
   },
   { timestamps: true }
 );

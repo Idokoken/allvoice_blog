@@ -9,21 +9,10 @@ const postRouter = express();
 
 //get all post for posts page
 postRouter.get("/", isLoggedIn, async (req, res) => {
-  const username = req.query.user;
-  const cat = req.query.cat;
   try {
-    let posts;
-
-    if (username) {
-      posts = await Post.find({ username });
-    } else if (cat) {
-      posts = await Post.find({ category: { $in: [cat] } });
-    } else {
-      posts = await Post.find();
-    }
+    let posts = await Post.find();
     const user = req.user;
-    // res.json(posts);
-    res.render("posts", { posts, user });
+    res.render("pages/posts", { posts, user });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -37,7 +26,7 @@ postRouter.get("/admin", isLoggedIn, async (req, res) => {
     const user = req.user;
     console.log(user.isAdmin);
     if (user.isAdmin) {
-      res.render("posts/index", { posts, category, user });
+      res.render("admin/index", { posts, category, user });
     } else {
       res.redirect("/");
     }
@@ -53,16 +42,14 @@ postRouter
     try {
       const user = req.user;
       const category = await Category.find();
-      res.render("posts/add", { category, user });
+      res.render("admin/posts/add", { category, user });
     } catch (error) {
       res.status(500).json(error);
     }
   })
   .post(upload.single("cover"), async (req, res) => {
     const { title, description, author, category } = req.body;
-
     //console.log({ title, description, author, category, cover });
-
     try {
       if (!title || !description || !req.file) {
         req.flash("error", "All compulsory fields are required");
@@ -84,8 +71,8 @@ postRouter.get("/:id", isLoggedIn, async (req, res) => {
   try {
     const user = req.user;
     const post = await Post.findById(req.params.id);
-    const author = await User.findOne({ username: post.author });
-    res.render("singlepost", { post, user });
+    const posts = await Post.find().limit(3);
+    res.render("pages/singlepost", { post, posts, user });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -99,7 +86,7 @@ postRouter
     try {
       const category = await Category.find();
       const post = await Post.findById(req.params.id);
-      res.render("posts/edit", { post, category, user });
+      res.render("admin/posts/edit", { post, category, user });
     } catch (error) {
       res.status(500).json({ error });
     }

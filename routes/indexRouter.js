@@ -1,28 +1,39 @@
 const express = require("express");
-const User = require("../models/userModel");
 const Post = require("../models/postModel");
-const multer = require("multer");
-const data = require("../src/data");
 const { isLoggedIn } = require("../middleware/middleware");
+const ContactUs = require("../models/ContactUsModel");
 
 const indexRouter = express();
 
 //get posts for home page
 indexRouter.get("/", isLoggedIn, async (req, res) => {
   const username = req.query.user;
-  const user = req.user;
+
   try {
-    const posts = await Post.find();
-    res.render("home", { posts, user });
+    const posts = await Post.find().limit(2);
+    const featuredPost = await Post.find({ isFeatured: true }).limit(2);
+    const user = req.user;
+    res.render("pages/home", { posts, featuredPost, user });
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-indexRouter.get("/contact", isLoggedIn, (req, res) => {
-  const user = req.user;
-  res.render("pages/contact", { user });
-});
+indexRouter
+  .route("/contact")
+  .get(isLoggedIn, (req, res) => {
+    const user = req.user;
+    res.render("pages/contact", { user });
+  })
+  .post(isLoggedIn, async (req, res) => {
+    try {
+      const newMessage = await new ContactUs(req.body);
+      await newMessage.save();
+      res.redirect("/contact", { successMsg: "message successfully sent" });
+    } catch (error) {
+      res.status(500).json(error);
+    }
+  });
 
 indexRouter.get("/about", isLoggedIn, (req, res) => {
   const user = req.user;

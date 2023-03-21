@@ -9,7 +9,7 @@ categoryRouter
   .route("/create")
   .get(isLoggedIn, (req, res) => {
     const user = req.user;
-    res.render("category/add", { user });
+    res.render("admin/category/add", { user });
   })
   .post(async (req, res) => {
     const newCategory = new Category(req.body);
@@ -24,12 +24,11 @@ categoryRouter
   });
 
 // edit category
-categoryRouter.get("/edit/:id", async (req, res) => {
+categoryRouter.get("/edit/:id", isLoggedIn, async (req, res) => {
   try {
+    const user = req.user;
     const category = await Category.findById(req.params.id);
-    res.render("category/edit", { category });
-    console.log(category);
-    res.json(category);
+    res.render("admin/category/edit", { category, user });
   } catch (error) {
     res.status(500).json(error);
   }

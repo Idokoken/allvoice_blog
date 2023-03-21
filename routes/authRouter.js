@@ -89,7 +89,9 @@ authRouter
       // res.status(200).json({ user, token });
       res.redirect("/");
     } catch (error) {
-      res.status(500).json(error);
+      // res.status(500).json(error);
+      req.flash("error", "error logining user");
+      res.render("pages/login", { layout: "layouts/register" });
     }
   });
 

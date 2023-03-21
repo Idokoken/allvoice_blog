@@ -7,7 +7,12 @@
   box-sizing: border-box;
 }
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Times New Roman', Times, serif;
+  margin: 0;
+  padding: 0;
+}
+main {
+  min-height: 70vh;
   margin: 0;
   padding: 0;
 }
@@ -30,65 +35,57 @@ h4 .error li{
 }
 
 
-/* main section */
-main {
-  min-height: 70vh;
-  margin: 0;
-  padding: 0;
-}
+/* home page */
 
 main .home {
- padding: 0;
- margin: 20px 0;
+ padding: 20px 0;
+ margin: 0;
 }
-
 main .home h2{
   font-weight: bold;
-  font-family: 'Times New Roman', Times, serif;
   margin: 20px 10px;
 }
-main .home .post1{
+main .home .featured{
    display: flex;
    flex-direction: column;
-   width: 100%;
-   
+   width: 100%; 
 }
-main .home .post1 .content{
+main .home .featured .content{
   height: 300px;
   width: 100%;
   position: relative;
 }
-main .home .post1 .content img{
+main .home .featured .content img{
    object-fit: cover;
    height: 100%;
    width: 100%;
 }
-main .home .post1 .content h3{
+main .home .featured .content h3{
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
 }
-main .home .post1 .content a .name{
+main .home .featured .content a .name{
   position: absolute;
   bottom: 50px;
   left: 50px;
   display: flex;
   color: white;
 }
-main .home .post1 .content a .name p{
+main .home .featured .content a .name p{
   margin-right: 30px;
 }
-main .home .post2{
+main .home .latest{
   display: flex;
   flex-direction: column;
 }
-main .home .post2 .content{
+main .home .latest .content{
   box-shadow:  5px 10px 8px 10px #eee6e6;
   margin-bottom: 12px;
 }
-main .home .post2 .content a{
+main .home .latest .content a{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -97,20 +94,23 @@ main .home .post2 .content a{
   text-decoration: none;
   color: black;
 }
-
-main .home .post2 .content a img{
-  flex: 33%;;
+main .home .latest .content a .img-container{
+  flex: 33%;
   width: 100px;
   height: 100px;  
 }
-main .home .post2 .content a .title{
+main .home .latest .content a .img-container img{
+  width: 100%;
+  height: 100%;  
+}
+main .home .latest .content a .title{
   flex: 66%;
   padding: 10px;
 } 
-main .home .post2 .content a .title .name{
+main .home .latest .content a .title .name{
   display: flex;
 }
-main .home .post2 .content a .title .name P{
+main .home .latest .content a .title .name P{
   color: blue;
   margin-right: 10px;
 }
@@ -124,11 +124,11 @@ main .home .post2 .content a .title .name P{
   width: 40px;
 }
 /* all posts page */
-main .allposts .post2 .content{
+main .allposts .latest .content{
   box-shadow:  5px 10px 8px 10px #eee6e6;
   margin-bottom: 12px;
 }
-main .allposts .post2 .content a{
+main .allposts .latest .content a{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -138,36 +138,39 @@ main .allposts .post2 .content a{
   color: black;
 }
 
-main .allposts .post2 .content a img{
+main .allposts .latest .content a img{
   flex: 33%;;
   width: 100px;
   height: 100px;  
 }
-main .allposts .post2 .content a .title{
+main .allposts .latest .content a .title{
   flex: 66%;
   padding: 10px;
 } 
-main .allposts .post2 .content a .title .name{
+main .allposts .latest .content a .title .name{
   display: flex;
 }
-main .allposts .post2 .content a .title .name P{
+main .allposts .latest .content a .title .name P{
   color: blue;
   margin-right: 10px;
 }
 
 /* single post page */
 main .singlepost{
-  padding: 10px;
+  padding: 10px 0;
+  font-family: 'Times New Roman', Times, serif;
 }
-main .singlepost .postImg{
-  height: 400px;
-  width: 80%;
-  display: block;
-  margin: auto;
+main .singlepost .img-container{
+  width: 100%;
+  height: 50vh;
+}
+main .singlepost .img-container img{
+  height: 100%;
+  width: 100%;
   object-fit: cover;
 }
 main .singlepost h2{
-  font-weight: 600;
+  font-weight: 700;
   color:rgb(73, 6, 62);
 }
 main .singlepost p{
@@ -182,17 +185,9 @@ main .singlepost p{
 
 /* contact page */
 .contact{
-  background-color: rgba(167, 156, 142, 0.6);
+  background-color: rgba(167, 156, 142, 0.3);
   margin: 0;
   padding: 0;
-}
-.contact .phone{
-  display: flex;
-  align-items: center;
-}
-.contact .phone img{
-  border-radius: 50%;
-  margin: 0 5px;
 }
 .contact label{
   color:rgb(73, 6, 62);
@@ -201,20 +196,16 @@ main .singlepost p{
 }
 .contact h2, .contact h3{
   color:rgb(73, 6, 62);
-  font-family: 'Times New Roman', Times, serif;
   font-weight: 600;
 }
 .contact button{
   background-color:rgb(73, 6, 62);
-  font-family: 'Times New Roman', Times, serif;
   font-weight: 600;
   color: white;
 }
 .contact a{
   text-decoration: none;
-  color: rgb(57, 136, 209);
-  font-size: 18px;
-  margin-left: 10px;
+  color: inherit;
 }
 .contact a:hover{
   color: rgb(177, 211, 84);
@@ -225,45 +216,44 @@ main .singlepost p{
 .about h3{
   margin-top: 30px;
   margin-bottom: 5px;
-  font-family: 'Times New Roman', Times, serif;
-  font-weight: 600;
+  font-family: 'Abril Fatface', cursive;
+  font-weight: 500;
   color: rgb(73, 6, 62);
 }
 .about p{
-  font-family: 'Times New Roman', Times, serif sans-serif;
   line-height: 1.6;
-  
+  font-size: 20px;
 }
 
 /* for medium screen */
 @media only screen and (min-width: 768px) {
   /* main section */
-  main .home .post1{
+  main .home .featured{
     flex-direction: row;
     flex-wrap: wrap;
  }
- main .home .post1 .content{
+ main .home .featured .content{
   /* flex: 50%; */
   width: 50%;
   height: 400px;
  }
- main .home .post2{
+ main .home .latest{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   
 }
-main .home .post2 .content{
+main .home .latest .content{
   width: 50%;
 }
 
 /* all posts page */
-main .allposts .post2{
+main .allposts .latest{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap; 
 }
-main .allposts .post2 .content{
+main .allposts .latest .content{
   flex: 50%;
   width: 50%;
   
@@ -273,16 +263,16 @@ main .allposts .post2 .content{
   /* for large screen */
 @media only screen and (min-width: 1024px) {
   /* home page */
-  main .home .post2 .content{
+  main .home .latest .content{
     width: 33%;
     
   }
     /* all posts page */
-main .allposts .post2{
+main .allposts .latest{
   display: flex;
   flex-direction: row; 
 }
-main .allposts .post2 .content{
+main .allposts .latest .content{
   width: 33%;
   flex: 33%;
 }

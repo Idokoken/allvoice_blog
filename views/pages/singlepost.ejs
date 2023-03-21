@@ -1,9 +1,11 @@
-<div class="singlepost container">
-  <img src="<%= post.cover %> " alt="rice" class="postImg" />
-  <h2 class="my-3"><%= post.title %></h2>
-  <p><%= post.description %></p>
+<div class="singlepost container-fliud">
+  <div class="img-container">
+    <img src="<%= post.cover %> " alt="cover" />
+  </div>
+  <h2 class="my-3 text-center"><%= post.title %></h2>
+  <p class="mx-4 my-3"><%= post.description %></p>
 
-  <div class="social my-3">
+  <div class="social my-3 mx-4">
     <h4>Share on</h4>
     <a href="https://twitter.com"
       ><img src="/images/twitter.png" alt="twitter"
