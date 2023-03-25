@@ -2,6 +2,7 @@ const express = require("express");
 const Post = require("../models/postModel");
 const { isLoggedIn } = require("../middleware/middleware");
 const ContactUs = require("../models/ContactUsModel");
+const Data = require("../src/data");
 
 const indexRouter = express();
 
@@ -10,7 +11,7 @@ indexRouter.get("/", isLoggedIn, async (req, res) => {
   const username = req.query.user;
 
   try {
-    const posts = await Post.find().limit(2);
+    const posts = await Post.find().limit(4).sort({ createdAt: -1 });
     const featuredPost = await Post.find({ isFeatured: true }).limit(2);
     const user = req.user;
     res.render("pages/home", { posts, featuredPost, user });

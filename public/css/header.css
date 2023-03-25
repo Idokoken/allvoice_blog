@@ -1,6 +1,5 @@
 .admin{
     display: flex;
-    background-color: rgb(78, 59, 97);
     color: white;
     justify-content: flex-end;
     padding-right: 20px;
@@ -29,7 +28,7 @@ color: rgb(177, 211, 84);
     
 }
 .nav-link, .navbar-brand{
-  color:rgb(73, 6, 62);
+  color: var(--primary-color);
   font-weight: 700;
   font-family: 'Times New Roman', Times, serif;
 }

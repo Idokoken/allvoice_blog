@@ -4,13 +4,14 @@ const Post = require("../models/postModel");
 const Category = require("../models/categoryModel");
 const { upload } = require("../src/uploadsCloudinary");
 const { isLoggedIn } = require("../middleware/middleware");
+const Data = require("../src/data");
 
 const postRouter = express();
 
 //get all post for posts page
 postRouter.get("/", isLoggedIn, async (req, res) => {
   try {
-    let posts = await Post.find();
+    let posts = await Post.find().sort({ createdAt: -1 });
     const user = req.user;
     res.render("pages/posts", { posts, user });
   } catch (err) {

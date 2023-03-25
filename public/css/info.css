@@ -1,33 +1,24 @@
-* {
-  box-sizing: border-box;
-}
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-main .singlepost .author-info {
+.singlepost .author-info {
   display: flex;
   flex-direction: column;
   background-color: rgb(179, 157, 157);
   margin-bottom: 0;
   border: 5px solid #000;
 }
-main .singlepost .author-info .name {
+.singlepost .author-info .name {
   margin: 10px;
   margin-top: 0;
 }
-main .singlepost .author-info .name h4,
-main .singlepost .author-info .name h5,
-main .singlepost .author-info .name p {
+.singlepost .author-info .name h4,
+.singlepost .author-info .name h5,
+.singlepost .author-info .name p {
   margin: 2px;
 }
-main .singlepost .author-info .name h4 {
+.singlepost .author-info .name h4 {
   color: rgb(57, 56, 90);
 }
 
-main .singlepost .author-info .name img {
+.singlepost .author-info .name img {
   height: 50px;
   width: 50px;
   border-radius: 10px;
@@ -37,7 +28,7 @@ main .singlepost .author-info .name img {
 
 /* for medium screen */
 @media only screen and (min-width: 768px) {
-  main .singlepost .author-info {
+  .singlepost .author-info {
     display: flex;
     flex-direction: row;
     background-color: rgb(179, 157, 157);
@@ -45,7 +36,7 @@ main .singlepost .author-info .name img {
     border: 5px solid #000;
     width: 40%;
   }
-  main .singlepost .author-info .name img {
+  .singlepost .author-info .name img {
     height: 100px;
     width: 100px;
     border-radius: 10px;

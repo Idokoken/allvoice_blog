@@ -3,6 +3,11 @@
 @import "social.css";
 @import "info.css";
 
+:root{
+  --primary-color:  rgb(73, 6, 62);
+  --secondary-color: white;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -34,58 +39,16 @@ h4 .error li{
   font-weight: 500;
 }
 
-
-/* home page */
-
-main .home {
- padding: 20px 0;
- margin: 0;
-}
-main .home h2{
-  font-weight: bold;
-  margin: 20px 10px;
-}
-main .home .featured{
-   display: flex;
-   flex-direction: column;
-   width: 100%; 
-}
-main .home .featured .content{
-  height: 300px;
-  width: 100%;
-  position: relative;
-}
-main .home .featured .content img{
-   object-fit: cover;
-   height: 100%;
-   width: 100%;
-}
-main .home .featured .content h3{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-}
-main .home .featured .content a .name{
-  position: absolute;
-  bottom: 50px;
-  left: 50px;
-  display: flex;
-  color: white;
-}
-main .home .featured .content a .name p{
-  margin-right: 30px;
-}
-main .home .latest{
+/* posts content css */
+.posts{
   display: flex;
   flex-direction: column;
 }
-main .home .latest .content{
+.posts .content{
   box-shadow:  5px 10px 8px 10px #eee6e6;
   margin-bottom: 12px;
 }
-main .home .latest .content a{
+.posts .content a{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -93,27 +56,85 @@ main .home .latest .content a{
   padding: 0;
   text-decoration: none;
   color: black;
+  /* position: relative; */
 }
-main .home .latest .content a .img-container{
+.posts .content a .img-container{
   flex: 33%;
   width: 100px;
   height: 100px;  
 }
-main .home .latest .content a .img-container img{
+.posts .content a .img-container img{
   width: 100%;
-  height: 100%;  
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;  
 }
-main .home .latest .content a .title{
+.posts .content a .title{
   flex: 66%;
   padding: 10px;
 } 
-main .home .latest .content a .title .name{
+.posts .content a .title .name{
   display: flex;
+  /* position: absolute;
+  bottom: 0; */
 }
-main .home .latest .content a .title .name P{
+.posts .content a .title .name P{
   color: blue;
   margin-right: 10px;
 }
+
+
+
+/* home page */
+main .home {
+ padding: 20px 0;
+ margin: 0;
+}
+main .home h2{
+  font-weight: 500;
+  margin: 20px 10px;
+  font-family: 'Lobster', cursive;
+  color: var(--primary-color);
+}
+main .home .featured{
+   display: flex;
+   flex-direction: column;
+   /* width: 100%;  */
+}
+main .home .featured .content{
+  height: 40vh;
+  width: 100%;
+  position: relative;
+}
+main .home .featured .content .img-container{
+  height: 100%;
+  width: 100%;
+}
+main .home .featured .content img{
+   height: 100%;
+   width: 100%;
+   object-fit: cover;
+}
+main .home .featured .content h3{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--secondary-color);
+  font-family: 'Abril Fatface', cursive;
+}
+main .home .featured .content a .name{
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  display: flex;
+  color: var(--secondary-color);
+}
+main .home .featured .content a .name p{
+  margin: 0;
+  margin-right: 20px;
+}
+
 
 /* admin page */
 .adminpage table tr td{
@@ -124,35 +145,10 @@ main .home .latest .content a .title .name P{
   width: 40px;
 }
 /* all posts page */
-main .allposts .latest .content{
-  box-shadow:  5px 10px 8px 10px #eee6e6;
-  margin-bottom: 12px;
-}
-main .allposts .latest .content a{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin: 20px;
-  padding: 0;
-  text-decoration: none;
-  color: black;
-}
-
-main .allposts .latest .content a img{
-  flex: 33%;;
-  width: 100px;
-  height: 100px;  
-}
-main .allposts .latest .content a .title{
-  flex: 66%;
-  padding: 10px;
-} 
-main .allposts .latest .content a .title .name{
-  display: flex;
-}
-main .allposts .latest .content a .title .name P{
-  color: blue;
-  margin-right: 10px;
+.allposts h2{
+  font-family: 'Abril Fatface', cursive;
+  color: var(--primary-color);
+  font-weight: 500;
 }
 
 /* single post page */
@@ -162,7 +158,7 @@ main .singlepost{
 }
 main .singlepost .img-container{
   width: 100%;
-  height: 50vh;
+  height: 40vh;
 }
 main .singlepost .img-container img{
   height: 100%;
@@ -171,7 +167,7 @@ main .singlepost .img-container img{
 }
 main .singlepost h2{
   font-weight: 700;
-  color:rgb(73, 6, 62);
+  color: var(--primary-color);;
 }
 main .singlepost p{
   line-height: 1.6;
@@ -185,23 +181,38 @@ main .singlepost p{
 
 /* contact page */
 .contact{
-  background-color: rgba(167, 156, 142, 0.3);
   margin: 0;
   padding: 0;
+  position: relative;
 }
+.contact::before{
+  content: '';
+  background-image: url('/images/contact.jpg');
+  background-size: 100% 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0.5;
+}
+.contact .address, .contact .form{
+  position: relative;
+}
+
 .contact label{
-  color:rgb(73, 6, 62);
+  color: var(--primary-color);;
   font-family: 'Times New Roman', Times, serif;
   font-weight: 600;
 }
 .contact h2, .contact h3{
-  color:rgb(73, 6, 62);
+  color: var(--primary-color);;
   font-weight: 600;
 }
 .contact button{
-  background-color:rgb(73, 6, 62);
+  background-color: var(--primary-color);;
   font-weight: 600;
-  color: white;
+  color: var(--secondary-color);
 }
 .contact a{
   text-decoration: none;
@@ -218,7 +229,7 @@ main .singlepost p{
   margin-bottom: 5px;
   font-family: 'Abril Fatface', cursive;
   font-weight: 500;
-  color: rgb(73, 6, 62);
+  color:  var(--primary-color);;
 }
 .about p{
   line-height: 1.6;
@@ -227,57 +238,45 @@ main .singlepost p{
 
 /* for medium screen */
 @media only screen and (min-width: 768px) {
-  /* main section */
+  /* posts content css */
+  .posts{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+  }
+  .posts .content{
+    width: 50%;
+  }
+
+  /* home page */
   main .home .featured{
     flex-direction: row;
     flex-wrap: wrap;
  }
  main .home .featured .content{
-  /* flex: 50%; */
   width: 50%;
-  height: 400px;
+  height: 60vh;
  }
- main .home .latest{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  
-}
-main .home .latest .content{
-  width: 50%;
-}
-
-/* all posts page */
-main .allposts .latest{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap; 
-}
-main .allposts .latest .content{
-  flex: 50%;
-  width: 50%;
-  
-}
 }
   
   /* for large screen */
 @media only screen and (min-width: 1024px) {
-  /* home page */
-  main .home .latest .content{
+  /* post content css */
+  .posts .content{
     width: 33%;
     
   }
-    /* all posts page */
-main .allposts .latest{
-  display: flex;
-  flex-direction: row; 
-}
-main .allposts .latest .content{
-  width: 33%;
-  flex: 33%;
-}
+   
 /* admin page */
 .adminpage table tr td{
   font-size: 1rem;
 }
-    } 
+
+/* singlepost page */
+main .singlepost .img-container{
+  width: 100%;
+  height: 50vh;
+}
+
+} 

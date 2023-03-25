@@ -1,21 +1,21 @@
 <div class="allposts mt-4">
-  <h2 class="ms-4">Featured Posts</h2>
-  <section class="post2">
-    <% for( let i = 0; i < posts.length; i++ ) { %>
+  <h2 class="ms-4">Posts</h2>
+  <div class="posts">
+    <% posts.map((post, i) => {%>
     <div class="content">
-      <a href="/post/<%= posts[i]._id %> " class="read">
-        <img src="<%= posts[i].cover %> " alt="cover" class="item-img" />
+      <a href="/post/<%= post._id %> " class="read">
+        <div class="img-container">
+          <img src="<%= post.cover %> " alt="cover" class="item-img" />
+        </div>
         <div class="title">
-          <h4><%= posts[i].title %></h4>
+          <h4><%= post.title %></h4>
           <div class="name">
-            <p><%= posts[i].author %></p>
-            <span></span>
-              - <%= moment(posts[i].createdAt).format('MMMM DD, YYYY') %></span
-            >
+            <p><%= post.author %> -</p>
+            <span><%= moment(post.createdAt).format('MMMM DD, YYYY') %></span>
           </div>
         </div>
       </a>
     </div>
-    <% } %>
-  </section>
+    <% }) %>
+  </div>
 </div>

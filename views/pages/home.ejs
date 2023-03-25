@@ -1,7 +1,7 @@
 <div class="home">
   <h2>Featured Posts</h2>
   <div class="featured">
-    <% posts.map((post, i) => {%>
+    <% featuredPost.map((post, i) => {%>
     <div class="content">
       <a href="/post/<%= post._id %> " class="read">
         <div class="img-container">
@@ -9,30 +9,34 @@
         </div>
         <h3><%= post.title %></h3>
         <div class="name">
-          <p><%= post.author %></p>
-          <span>- <%= moment(post.createdAt).format('MMMM DD, YYYY') %></span>
+          <p><%= post.author %> -</p>
+          <span><%= moment(post.createdAt).format('MMMM DD, YYYY') %></span>
         </div>
       </a>
     </div>
     <%}) %>
   </div>
-  <h2>Latest Posts</h2>
   <div class="latest">
-    <% posts.map((post, i) => {%>
-    <div class="content">
-      <a href="/post/<%= post._id %> " class="read">
-        <div class="img-container">
-          <img src="<%= post.cover %> " alt="cover" class="item-img" />
-        </div>
-        <div class="title">
-          <h4><%= post.title %></h4>
-          <div class="name">
-            <p><%= post.author %></p>
-            <span>- <%= moment(post.createdAt).format('MMMM DD, YYYY') %></span>
+    <h2>Latest Posts</h2>
+    <div class="posts">
+      <% posts.map((post, i) => {%>
+      <div class="content">
+        <a href="/post/<%= post._id %> " class="read">
+          <div class="img-container">
+            <img src="<%= post.cover %> " alt="cover" class="item-img" />
           </div>
-        </div>
-      </a>
+          <div class="title">
+            <h4><%= post.title %></h4>
+            <div class="name">
+              <p><%= post.author %></p>
+              <span
+                >- <%= moment(post.createdAt).format('MMMM DD, YYYY') %></span
+              >
+            </div>
+          </div>
+        </a>
+      </div>
+      <% }) %>
     </div>
-    <% }) %>
   </div>
 </div>

@@ -1,33 +1,17 @@
-* {
-  box-sizing: border-box;
-}
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, Helvetica, sans-serif;
-}
 
-main .singlepost .social {
+.singlepost .social {
   margin-bottom: 2px;
 }
 
-main .singlepost .social img {
+.singlepost .social img {
   height: 30px;
   width: 30px;
   border-radius: 50%;
   margin: 0 15px;
 }
-main .singlepost .social h4 {
-  margin: 0;
-  color: rgb(128, 69, 69);
+.singlepost .social h4 {
+  color: rgb(150, 8, 8);
 }
-
-/* for medium screen */
-/* @media only screen and (min-width: 768px) {
-  
+.singlepost .social a:hover{
+  opacity: 0.5;
 }
-
-/* for large screen */
-/* @media only screen and (min-width: 1024px) {
- 
-} */
