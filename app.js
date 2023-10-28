@@ -57,6 +57,7 @@ app.use(
     secret: "secret",
     saveUninitialized: true,
     resave: true,
+    cookie: { maxAge: 6000 },
   })
 );
 //app.use(express.session({ cookie: { maxAge: 60000 }}));
@@ -74,4 +75,4 @@ app.use("/user", userRouter);
 app.use("/category", categoryRouter);
 app.use("/post", postRouter);
 
-app.listen(port, () => console.log("listening on port " + chalk.cyan(4000)));
+app.listen(port, () => console.log("listening on port " + chalk.cyan(8000)));

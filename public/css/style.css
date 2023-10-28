@@ -6,13 +6,14 @@
 :root{
   --primary-color:  rgb(73, 6, 62);
   --secondary-color: white;
+  /* 49063e */
 }
 
 * {
   box-sizing: border-box;
 }
 body {
-  font-family: 'Times New Roman', Times, serif;
+  font-family: 'Noto Serif', serif;
   margin: 0;
   padding: 0;
 }
@@ -23,18 +24,18 @@ main {
 }
 
 /* flash messages */
-h4 ul{
+#messages ul{
 	list-style-type: none;
   margin: 20px 0;
   display: flex;
   justify-content: center;
   align-self: center;
 	}
-h4 .info li{
+#messages .info li{
 	color: green;
   font-weight: 500;
 }
-h4 .error li{
+#messages .error li{
 	color: rgb(179, 54, 54);
   font-weight: 500;
 }
@@ -45,7 +46,7 @@ h4 .error li{
   flex-direction: column;
 }
 .posts .content{
-  box-shadow:  5px 10px 8px 10px #eee6e6;
+  box-shadow:  5px 5px 8px 10px #eee6e6;
   margin-bottom: 12px;
 }
 .posts .content a{
@@ -73,6 +74,10 @@ h4 .error li{
   flex: 66%;
   padding: 10px;
 } 
+.posts .content a .title h4{
+  font-weight: 700;
+  font-style: italic;
+}
 .posts .content a .title .name{
   display: flex;
   /* position: absolute;
@@ -99,40 +104,74 @@ main .home h2{
 main .home .featured{
    display: flex;
    flex-direction: column;
+   align-items: center;
    /* width: 100%;  */
 }
 main .home .featured .content{
   height: 40vh;
   width: 100%;
   position: relative;
+  border: 2px solid rgba(73, 6, 62, 0);
+  border-radius: 10px;
+  background-color: gray;
+  margin-bottom: 30px;
 }
 main .home .featured .content .img-container{
   height: 100%;
   width: 100%;
+  border-radius: 10px;
+  
 }
 main .home .featured .content img{
    height: 100%;
    width: 100%;
    object-fit: cover;
+   border-radius: 10px;
 }
 main .home .featured .content h3{
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
+  font-size: 30px;
+  font-weight: 700;
+  font-style: italic;
   transform: translate(-50%, -50%);
   color: var(--secondary-color);
-  font-family: 'Abril Fatface', cursive;
+  font-family: 'Poppins', sans-serif;
+  /* text-shadow: 1px 1px 0 red, -1px -1px 0 red, 1px -1px 0 red, -1px 1px 0 red; */
+  -webkit-text-stroke: 1.5px rgb(160, 7, 7);
 }
 main .home .featured .content a .name{
   position: absolute;
-  bottom: 30px;
-  left: 30px;
+  bottom: 20px;
+  left: 20px;
   display: flex;
   color: var(--secondary-color);
+}
+main .home .featured .content a .desc {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 20%;
+  background: linear-gradient(180deg, rgba(30, 26, 26, 0) 0%, #1E1A1A 100%);
+  border-radius: 0 0 10px 10px;
 }
 main .home .featured .content a .name p{
   margin: 0;
   margin-right: 20px;
+}
+/* main .home .featured .content a .name span{
+  
+} */
+main .home .more{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main .home .more a{
+  font-weight: 700;
+  border-radius: 10px;
+  font-size: 18px;
 }
 
 
@@ -150,11 +189,23 @@ main .home .featured .content a .name p{
   color: var(--primary-color);
   font-weight: 500;
 }
+.allposts nav{
+  display: flex;
+  justify-content: center;
+}
 
 /* single post page */
 main .singlepost{
   padding: 10px 0;
   font-family: 'Times New Roman', Times, serif;
+}
+main .singlepost .time{
+  display: flex;
+  align-items: center;
+  font-family: 'Noto Serif', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: blue;
 }
 main .singlepost .img-container{
   width: 100%;
@@ -167,11 +218,10 @@ main .singlepost .img-container img{
 }
 main .singlepost h2{
   font-weight: 700;
-  color: var(--primary-color);;
+  color: var(--primary-color);
 }
 main .singlepost p{
-  line-height: 1.6;
-  text-indent: 50px;
+  line-height: 2.0;
   font-family: 'Times New Roman', Times, serif;
   /* letter-spacing: 5px; */
   word-spacing: 5px;
@@ -183,31 +233,18 @@ main .singlepost p{
 .contact{
   margin: 0;
   padding: 0;
-  position: relative;
-}
-.contact::before{
-  content: '';
-  background-image: url('/images/contact.jpg');
-  background-size: 100% 100%;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  opacity: 0.5;
-}
-.contact .address, .contact .form{
-  position: relative;
+  background-color: #ecf0f3;
 }
 
 .contact label{
-  color: var(--primary-color);;
+  color: var(--primary-color);
   font-family: 'Times New Roman', Times, serif;
   font-weight: 600;
 }
 .contact h2, .contact h3{
-  color: var(--primary-color);;
+  color: var(--primary-color);
   font-weight: 600;
+  font-style: italic;
 }
 .contact button{
   background-color: var(--primary-color);;
@@ -224,6 +261,9 @@ main .singlepost p{
 }
 
 /* about page */
+.about{
+  font-family: 'Times New Roman', Times, serif;
+}
 .about h3{
   margin-top: 30px;
   margin-bottom: 5px;
@@ -232,7 +272,7 @@ main .singlepost p{
   color:  var(--primary-color);;
 }
 .about p{
-  line-height: 1.6;
+  line-height: 2.0;
   font-size: 20px;
 }
 
@@ -250,23 +290,32 @@ main .singlepost p{
   }
 
   /* home page */
-  main .home .featured{
-    flex-direction: row;
-    flex-wrap: wrap;
- }
  main .home .featured .content{
-  width: 50%;
+  width: 80%;
   height: 60vh;
+  border-radius: 30px;
  }
+ main .home .featured .content .img-container{
+  border-radius: 30px;
+  
+}
+
+main .home .featured .content img{
+   border-radius: 30px;
+}
+main .home .featured .content a .desc {
+  border-radius: 0 0 30px 30px;
+}
+main .singlepost .img-container{
+  width: 100%;
+  height: 50vh;
+}
 }
   
   /* for large screen */
 @media only screen and (min-width: 1024px) {
   /* post content css */
-  .posts .content{
-    width: 33%;
-    
-  }
+  
    
 /* admin page */
 .adminpage table tr td{

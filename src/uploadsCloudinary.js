@@ -14,7 +14,7 @@ const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
     folder: "allvoiceBlog",
-    format: async (req, file) => "png", // supports promises as well
+    format: async (req, file) => "png", // supports promises as well ok
     // public_id: (req, file) => "cover-image",
   },
 });

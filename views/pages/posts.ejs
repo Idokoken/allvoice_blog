@@ -1,5 +1,5 @@
-<div class="allposts mt-4">
-  <h2 class="ms-4">Posts</h2>
+<div class="allposts mt-4 m-md-4">
+  <h2 class="ms-4 my-4">Posts</h2>
   <div class="posts">
     <% posts.map((post, i) => {%>
     <div class="content">
@@ -11,11 +11,37 @@
           <h4><%= post.title %></h4>
           <div class="name">
             <p><%= post.author %> -</p>
-            <span><%= moment(post.createdAt).format('MMMM DD, YYYY') %></span>
+            <span><%= moment(post.createdAt).format('DD MMM, YY') %></span>
           </div>
         </div>
       </a>
     </div>
     <% }) %>
   </div>
+  <nav aria-label="..." class="mt-5">
+    <ul class="pagination">
+      <li class="page-item">
+        <% if (currentPage != 1) { %>
+        <a href="/post?page=1" class="page-link">First</a>
+        <% } %>
+      </li>
+      <li class="page-item">
+        <% if (currentPage > 1) { %>
+        <a href="/post?page=<%= currentPage - 1 %>" class="page-link"
+          >Previous</a
+        >
+        <% } %>
+      </li>
+      <li class="page-item">
+        <span class="page-link"
+          >Page <%= currentPage %> of <%= totalPages %></span
+        >
+      </li>
+      <li class="page-item">
+        <% if (currentPage < totalPages) { %>
+        <a href="/post?page=<%= currentPage + 1 %>" class="page-link">Next</a>
+        <% } %>
+      </li>
+    </ul>
+  </nav>
 </div>

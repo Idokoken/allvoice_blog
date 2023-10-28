@@ -19,21 +19,36 @@ body{
   overflow: hidden;
   font-family: poppins;
 }
+/* flash messages */
+#messages ul{
+	list-style-type: none;
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+	}
+#messages .info li{
+	color: green; 
+}
+#messages .error li{
+	color: red;
+}
 .register {
 	position: relative;
   width: 350px;
-  height: 600px;
+  min-height: 600px;
   border-radius: 20px;
   padding: 20px 30px;
   box-sizing: border-box;
   background: #ecf0f3;
   box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
 }
-
+.brand{
+  display: block;
+}
 .brand-logo {
   height: 70px;
   width: 70px;
-  /* background: url("https://img.icons8.com/color/100/000000/twitter--v2.png"); */
   margin: auto;
   border-radius: 50%;
   box-sizing: border-box;
@@ -108,7 +123,7 @@ button:hover {
   box-shadow: none;
 }
 
-a {
+.account {
   position: absolute;
   font-size: 15px;
   text-decoration: none;
@@ -128,22 +143,3 @@ h1{
 }
 /* main */
 
-
-
-
-/* flash messages */
-h4 ul{
-	list-style-type: none;
-  margin: 20px 0;
-  display: flex;
-  justify-content: center;
-  align-self: center;
-	}
-h4 .info li{
-	color: green;
-  font-weight: 500;
-}
-h4 .error li{
-	color: rgb(179, 54, 54);
-  font-weight: 500;
-}

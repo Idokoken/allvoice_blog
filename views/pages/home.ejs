@@ -8,15 +8,17 @@
           <img src="<%= post.cover %> " alt="cover" class="item-img" />
         </div>
         <h3><%= post.title %></h3>
-        <div class="name">
-          <p><%= post.author %> -</p>
-          <span><%= moment(post.createdAt).format('MMMM DD, YYYY') %></span>
+        <div class="desc">
+          <div class="name">
+            <p><%= post.author %> -</p>
+            <span><%= moment(post.createdAt).format('DD MMM, YY') %></span>
+          </div>
         </div>
       </a>
     </div>
     <%}) %>
   </div>
-  <div class="latest">
+  <div class="latest m-md-4">
     <h2>Latest Posts</h2>
     <div class="posts">
       <% posts.map((post, i) => {%>
@@ -29,14 +31,15 @@
             <h4><%= post.title %></h4>
             <div class="name">
               <p><%= post.author %></p>
-              <span
-                >- <%= moment(post.createdAt).format('MMMM DD, YYYY') %></span
-              >
+              <span>- <%= moment(post.createdAt).format('DD MMM, YY') %></span>
             </div>
           </div>
         </a>
       </div>
       <% }) %>
+    </div>
+    <div class="more mt-4">
+      <a class="btn btn-primary px-4" href="/post">More</a>
     </div>
   </div>
 </div>

@@ -8,6 +8,7 @@ const Data = [
     author: "chinua achebe",
     isFeatured: false,
     cover: "/items/project1.jpg",
+    createdAt: Date.now(),
   },
   {
     _id: 2,
@@ -18,6 +19,7 @@ const Data = [
     author: "chinua",
     isFeatured: true,
     cover: "/items/project2.jpg",
+    createdAt: Date.now(),
   },
   {
     _id: 3,
@@ -28,6 +30,7 @@ const Data = [
     author: "lucas",
     isFeatured: true,
     cover: "/items/project3.jpg",
+    createdAt: Date.now(),
   },
   {
     _id: 4,
@@ -38,6 +41,7 @@ const Data = [
     author: "ken",
     isFeatured: false,
     cover: "/items/project4.jpg",
+    createdAt: Date.now(),
   },
   {
     _id: 5,
@@ -48,6 +52,7 @@ const Data = [
     author: "zion",
     isFeatured: true,
     cover: "/items/project5.jpg",
+    createdAt: Date.now(),
   },
   {
     _id: 6,
@@ -58,6 +63,7 @@ const Data = [
     author: "jane",
     isFeatured: false,
     cover: "/items/project6.jpg",
+    createdAt: Date.now(),
   },
 ];
 

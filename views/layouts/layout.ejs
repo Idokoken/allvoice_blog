@@ -88,15 +88,18 @@
     </header>
 
     <main>
-      <% if (messages) { %>
-      <h4><%- messages() %></h4>
-      <% } %> <%- body %>
+      <div class=""><%- body %></div>
     </main>
     <footer><%- include ('../partials/footer'); %></footer>
 
-    <!-- javascript -->
+    <!-- javascript section -->
     <script src="/js/all.min.js"></script>
     <script src="/js/bootstrap.bundle.min.js"></script>
     <script src="/js/index.js"></script>
+
+    <script src="/ckeditor/ckeditor.js"></script>
+    <script>
+      CKEDITOR.replace("description");
+    </script>
   </body>
 </html>

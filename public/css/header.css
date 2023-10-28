@@ -3,7 +3,8 @@
     color: white;
     justify-content: flex-end;
     padding-right: 20px;
-    background-image: linear-gradient(to right, rgb(78, 59, 97), rgb(13, 128, 32),rgb(78, 59, 97),rgb(78, 59, 97));
+    background: linear-gradient(269.76deg, #49063E 13.12%, rgba(206, 177, 21, 0.7) 34.83%, #B79C12 59.28%,
+     #49063E 89.19%);
 }
 .h-icon{
     padding-right: 5px;
@@ -23,14 +24,20 @@ color: rgb(177, 211, 84);
 }
 .bg-light{
     background-color: white !important;
-    /* background-image: linear-gradient(to right, blue, rgb(155, 170, 240), blue) !important; */
     box-shadow: 5px 5px 5px 5px #eee6e6;
     
 }
 .nav-link, .navbar-brand{
   color: var(--primary-color);
   font-weight: 700;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: 'Noto Serif', serif;
+}
+.navbar-brand{
+   background: linear-gradient(270deg, #49063E 3.28%, #DD11BC 47.7%, #49063E 91.21%);
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+   background-clip: text;
+   text-fill-color: transparent;
 }
 .nav-link:hover{
     color: rgb(177, 211, 84);

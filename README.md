@@ -19,6 +19,6 @@ The following technologies were used in building the backend
 1. Nodejs
 2. Express
 3. MongoDB
-4. some npm modules like Mongoose ORM, Multer, Jsonwebtoken, Bcryptjs, Cloudnary, Connect-flash etc.   
+4. some npm modules like Mongoose ORM, Multer, Jsonwebtoken, Bcryptjs, Cloudinary, Connect-flash etc.   
    
 The hosted(live) website can be viewed on **[https://allvoice.onrender.com](https://allvoice.onrender.com)**.

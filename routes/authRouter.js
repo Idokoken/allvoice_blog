@@ -21,6 +21,14 @@ authRouter
         layout: "layouts/register",
       });
     }
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      req.flash("error", "email already in use");
+      res.render("pages/register", {
+        layout: "layouts/register",
+      });
+    }
+
     let salt = bcrypt.genSaltSync(10);
     let hashedPassword = bcrypt.hashSync(password, salt);
     // Store hash in your password DB.
@@ -32,7 +40,7 @@ authRouter
     });
     try {
       const user = await newUser.save();
-      res.redirect("/auth/login");
+      res.redirect(200, "/auth/login");
       console.log(user);
     } catch (error) {
       res.status(500).json(error);
@@ -56,8 +64,10 @@ authRouter
 
     try {
       if (!email || !password) {
-        req.flash("error", "All fields are required");
-        res.render("pages/login", { layout: "layouts/register" });
+        res.render("pages/login", {
+          layout: "layouts/register",
+          errorMsg: "All fields are required",
+        });
       }
 
       const user = await User.findOne({ email });
@@ -72,7 +82,7 @@ authRouter
         res.render("pages/login", { layout: "layouts/register" });
       }
 
-      const token = jwt.sign(
+      const token = await jwt.sign(
         { id: user._id, isAdmin: user.isAdmin },
         process.env.JWT_SECRET,
         { expiresIn: process.env.JWT_EXPIRES_IN }
@@ -83,11 +93,12 @@ authRouter
         expires: new Date(
           Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000
         ),
-        httpOnly: true,
+        // httpOnly: true,
       };
       res.cookie("jwt", token, cookieOptions);
       // res.status(200).json({ user, token });
-      res.redirect("/");
+      res.redirect(200, "/");
+      // res.cookie("jwt", token, cookieOptions).redirect(200, "/");
     } catch (error) {
       // res.status(500).json(error);
       req.flash("error", "error logining user");

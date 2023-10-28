@@ -8,6 +8,36 @@
       <a href="/category/create" class="btn btn-primary m-2">Add Category</a>
     </div>
   </div>
+  <h3 class="text-info mt-4 mb-2">News Category</h3>
+  <table class="table table-dark table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Category</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+        <th scope="col">Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for( let i = 0; i <category.length; i++ ) { %>
+      <tr>
+        <th scope="row"><%=category[i].name %></th>
+        
+        <td>
+          <a class="btn btn-secondary" href="/category/edit/<%=category[i]._id %>"
+            ><i class="fa-regular fa-pen-to-square"></i
+          ></a>
+        </td>
+        <td>
+          <a class="btn btn-danger" href="/category/delete/<%=category[i]._id %>"
+            ><i class="fa-solid fa-trash-can"></i
+          ></a>
+        </td>
+        <td><%=moment(category[i].createdAt).format('DD MMM YY')%></td>
+      </tr>
+      <% } %>
+    </tbody>
+  </table>
   <h3 class="text-info mt-4 mb-2">News Posts</h3>
   <table class="table table-dark table-striped post">
     <thead>
@@ -39,34 +69,30 @@
       <% } %>
     </tbody>
   </table>
-  <h3 class="text-info mt-4 mb-2">News Category</h3>
-  <table class="table table-dark table-striped">
-    <thead>
-      <tr>
-        <th scope="col">Category</th>
-        <th scope="col">Edit</th>
-        <th scope="col">Delete</th>
-        <th scope="col">Date</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% for( let i = 0; i <category.length; i++ ) { %>
-      <tr>
-        <th scope="row"><%=category[i].name %></th>
-        
-        <td>
-          <a class="btn btn-secondary" href="/category/edit/<%=category[i]._id %>"
-            ><i class="fa-regular fa-pen-to-square"></i
-          ></a>
-        </td>
-        <td>
-          <a class="btn btn-danger" href="/category/delete/<%=category[i]._id %>"
-            ><i class="fa-solid fa-trash-can"></i
-          ></a>
-        </td>
-        <td><%=moment(category[i].createdAt).format('DD MMM YY')%></td>
-      </tr>
-      <% } %>
-    </tbody>
-  </table>
+  <nav aria-label="..." class="mt-5">
+    <ul class="pagination">
+      <li class="page-item">
+        <% if (currentPage != 1) { %>
+        <a href="/admin?page=1" class="page-link">First</a>
+        <% } %>
+      </li>
+      <li class="page-item">
+        <% if (currentPage > 1) { %>
+        <a href="/admin?page=<%= currentPage - 1 %>" class="page-link"
+          >Previous</a
+        >
+        <% } %>
+      </li>
+      <li class="page-item">
+        <span class="page-link"
+          >Page <%= currentPage %> of <%= totalPages %></span
+        >
+      </li>
+      <li class="page-item">
+        <% if (currentPage < totalPages) { %>
+        <a href="/admin?page=<%= currentPage + 1 %>" class="page-link">Next</a>
+        <% } %>
+      </li>
+    </ul>
+  </nav>
 </div>
