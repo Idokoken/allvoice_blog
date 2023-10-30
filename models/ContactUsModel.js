@@ -5,7 +5,7 @@ const contactUsModel = new Schema(
   {
     name: { type: String },
     email: { type: String },
-    description: { type: String },
+    subject: { type: String },
   },
   { timestamps: true }
 );

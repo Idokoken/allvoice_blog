@@ -18,7 +18,7 @@ body {
   padding: 0;
 }
 main {
-  min-height: 70vh;
+  min-height: 50vh;
   margin: 0;
   padding: 0;
 }
@@ -34,10 +34,12 @@ main {
 #messages .info li{
 	color: green;
   font-weight: 500;
+  font-size: 20px;
 }
 #messages .error li{
 	color: rgb(179, 54, 54);
   font-weight: 500;
+  font-size: 20px;
 }
 
 /* posts content css */
@@ -77,6 +79,7 @@ main {
 .posts .content a .title h4{
   font-weight: 700;
   font-style: italic;
+  font-size: 17px;
 }
 .posts .content a .title .name{
   display: flex;
@@ -88,6 +91,10 @@ main {
   margin-right: 10px;
 }
 
+/* add and edit post page and category*/
+.addPost h1, .addCatgory h1{
+ font-weight: 700;
+}
 
 
 /* home page */
@@ -130,16 +137,16 @@ main .home .featured .content img{
 }
 main .home .featured .content h3{
   position: absolute;
-  top: 40%;
+  top: 60%;
   left: 50%;
-  font-size: 30px;
+  font-size: 25px;
   font-weight: 700;
   font-style: italic;
   transform: translate(-50%, -50%);
   color: var(--secondary-color);
   font-family: 'Poppins', sans-serif;
   /* text-shadow: 1px 1px 0 red, -1px -1px 0 red, 1px -1px 0 red, -1px 1px 0 red; */
-  -webkit-text-stroke: 1.5px rgb(160, 7, 7);
+  -webkit-text-stroke: 2px black;
 }
 main .home .featured .content a .name{
   position: absolute;
@@ -176,13 +183,30 @@ main .home .more a{
 
 
 /* admin page */
+.adminpage h2{
+  text-align: center;
+  font-weight: 700;
+  font-style: italic;
+  margin-bottom: 20px;
+}
 .adminpage table tr td{
   font-size: 0.8rem;
 }
-.adminpage img{
-  height: 40px;
-  width: 40px;
+.adminpage table tr td a{
+  height: 25px;
+  width: 25px;
+  padding: 0;
 }
+.adminpage img{
+  height: 25px;
+  width: 25px;
+}
+.adminpage nav{
+  display: flex;
+  justify-content: center;
+}
+
+
 /* all posts page */
 .allposts h2{
   font-family: 'Abril Fatface', cursive;
@@ -278,6 +302,25 @@ main .singlepost p{
 
 /* for medium screen */
 @media only screen and (min-width: 768px) {
+  /* flash messages */
+  #messages .info li{
+    font-size: 24px;
+  }
+  #messages .error li{
+    font-size: 24px;
+  }
+  /* admin page */
+.adminpage table tr td{
+  font-size: 1rem;
+}
+.adminpage img{
+  height: 40px;
+  width: 40px;
+}
+.adminpage table tr td a{
+  height: 40px;
+  width: 40px;
+}
   /* posts content css */
   .posts{
     display: flex;
@@ -290,11 +333,17 @@ main .singlepost p{
   }
 
   /* home page */
+  main .home .featured .content h3{
+    font-size: 30px;
+  }
  main .home .featured .content{
   width: 80%;
   height: 60vh;
   border-radius: 30px;
  }
+ .posts .content a .title h4{
+  font-size: 21px;
+}
  main .home .featured .content .img-container{
   border-radius: 30px;
   
@@ -317,10 +366,6 @@ main .singlepost .img-container{
   /* post content css */
   
    
-/* admin page */
-.adminpage table tr td{
-  font-size: 1rem;
-}
 
 /* singlepost page */
 main .singlepost .img-container{

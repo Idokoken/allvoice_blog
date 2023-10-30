@@ -43,15 +43,12 @@ authRouter
       res.redirect(200, "/auth/login");
       console.log(user);
     } catch (error) {
-      res.status(500).json(error);
+      req.flash("error", "error creating user");
+      res.render("pages/register", {
+        layout: "layouts/register",
+      });
     }
   });
-
-// userSchema.methods.createJWT = function () {
-//   return jwt.sign({ userId: this._id }, process.env.JWT_SECRET, {
-//     expiresIn: process.env.JWT_LIFETIME,
-//   });
-// };
 
 //login
 authRouter
@@ -64,22 +61,22 @@ authRouter
 
     try {
       if (!email || !password) {
-        res.render("pages/login", {
+        req.flash("error", "all fields are required");
+        return res.render("pages/login", {
           layout: "layouts/register",
-          errorMsg: "All fields are required",
         });
       }
 
       const user = await User.findOne({ email });
       if (!user) {
         req.flash("error", "invalid cridentials");
-        res.render("pages/login", { layout: "layouts/register" });
+        return res.render("pages/login", { layout: "layouts/register" });
       }
 
       const userPassword = await bcrypt.compare(password, user.password);
       if (!userPassword) {
         req.flash("error", "invalid cridentials");
-        res.render("pages/login", { layout: "layouts/register" });
+        return res.render("pages/login", { layout: "layouts/register" });
       }
 
       const token = await jwt.sign(
@@ -93,16 +90,14 @@ authRouter
         expires: new Date(
           Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000
         ),
-        // httpOnly: true,
+        httpOnly: true,
       };
       res.cookie("jwt", token, cookieOptions);
       // res.status(200).json({ user, token });
-      res.redirect(200, "/");
-      // res.cookie("jwt", token, cookieOptions).redirect(200, "/");
+      return res.redirect("/");
     } catch (error) {
-      // res.status(500).json(error);
       req.flash("error", "error logining user");
-      res.render("pages/login", { layout: "layouts/register" });
+      return res.render("pages/login", { layout: "layouts/register" });
     }
   });
 

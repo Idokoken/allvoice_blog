@@ -1,6 +1,7 @@
-<div class="container-fluid py-4 my-0 text-white bg-dark">
+<div class="container-fluid py-4 my-0 addPost">
   <div class="container">
-    <h1 class="text-darks">Add Post</h1>
+    <h1 class="text-darks mt-2 mb-4">Add Post</h1>
+    <% if (messages) { %> <%- messages() %> <% } %>
     <form action="/post/create" method="post" enctype="multipart/form-data">
       <div class="form-group mb-3">
         <label class="mb-1" for="name">Title</label>

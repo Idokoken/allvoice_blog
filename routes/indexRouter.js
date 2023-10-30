@@ -14,7 +14,9 @@ indexRouter.get("/", isLoggedIn, async (req, res) => {
     const posts = await Post.find({ isFeatured: false })
       .limit(6)
       .sort({ createdAt: -1 });
-    const featuredPost = await Post.find({ isFeatured: true }).limit(2);
+    const featuredPost = await Post.find({ isFeatured: true })
+      .limit(2)
+      .sort({ createdAt: -1 });
     const user = req.user;
     res.render("pages/home", { posts, featuredPost, user });
   } catch (err) {

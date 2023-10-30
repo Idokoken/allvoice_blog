@@ -85,7 +85,7 @@ postRouter
     try {
       if (!title || !description || !req.file) {
         req.flash("error", "All compulsory fields are required");
-        res.redirect("/post/create");
+        return res.redirect("/post/create");
       }
       const cover = req.file.path;
       console.log({ title, description, author, category, cover });
@@ -94,7 +94,8 @@ postRouter
       req.flash("info", "Post successfully created");
       res.redirect("/post/admin");
     } catch (err) {
-      res.status(500).json(err);
+      req.flash("error", "error creating post");
+      return res.redirect("/post/create");
     }
   });
 
@@ -125,12 +126,12 @@ postRouter
     }
   })
   .post(upload.single("cover"), async (req, res) => {
-    const { title, description, author, categories } = req.body;
+    const { title, description, author, category, isFeatured } = req.body;
     let cover;
     try {
       if (!title || !description) {
         req.flash("error", "All compulsory fields are required");
-        res.redirect("/post/update/" + req.params.id);
+        return res.redirect("/post/update/" + req.params.id);
       }
       if (req.file != null && !req.file.isEmpty()) {
         cover = req.file.path;
@@ -139,14 +140,14 @@ postRouter
       //console.log({ title, description, author, category, cover });
       await Post.findByIdAndUpdate(
         req.params.id,
-        { title, description, author, categories, cover },
+        { title, description, author, category, cover, isFeatured },
         { new: true }
       );
       req.flash("info", "post successfully updated");
       res.redirect("/post/admin");
     } catch (error) {
-      res.status(500).json(error);
-      //res.redirect("/category/create");
+      req.flash("error", "error updating post");
+      return res.redirect("/category/create");
     }
   });
 

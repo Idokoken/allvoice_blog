@@ -12,14 +12,19 @@ categoryRouter
     res.render("admin/category/add", { user });
   })
   .post(async (req, res) => {
-    const newCategory = new Category(req.body);
+    const { name } = req.body;
     try {
+      if (!name) {
+        req.flash("error", "category name is required");
+        return res.redirect("/category/create");
+      }
+      const newCategory = new Category({ name });
       const category = await newCategory.save();
       req.flash("info", "Category successfully created");
       res.redirect("/post/admin");
     } catch (err) {
-      //res.status(500).json(err);
-      res.redirect("/category/create");
+      req.flash("error", "error creating category");
+      return res.redirect("/category/create");
     }
   });
 
@@ -30,7 +35,8 @@ categoryRouter.get("/edit/:id", isLoggedIn, async (req, res) => {
     const category = await Category.findById(req.params.id);
     res.render("admin/category/edit", { category, user });
   } catch (error) {
-    res.status(500).json(error);
+    req.flash("error", "error updating category");
+    return res.redirect("/category/create");
   }
 });
 
@@ -49,14 +55,19 @@ categoryRouter.post("/edit/:id", async (req, res) => {
 });
 */
 categoryRouter.post("/edit/:id", (req, res) => {
-  //const { name } = req.body;
+  const { name } = req.body;
+  if (!name) {
+    req.flash("error", "category name is required");
+    return res.redirect("/category/edit/" + req.params.id);
+  }
   Category.findByIdAndUpdate(
     req.params.id,
-    { $set: req.body },
+    { $set: { name } },
     { new: true },
     (err, data) => {
       if (err) {
-        res.status(500).json(err);
+        req.flash("error", "error updating category");
+        return res.redirect("/category/edit/" + req.params.id);
       } else {
         req.flash("info", "Category successfully updated");
         res.redirect("/post/admin");
