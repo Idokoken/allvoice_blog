@@ -2,8 +2,8 @@
   <div class="img-container">
     <img src="<%= post.cover %> " alt="cover" />
   </div>
-
-  <div class="container-fliud p-4">
+  <
+  <div class="container-fliud p-4 post-content">
     <div class="time">
       <i class="fa-regular fa-calendar"></i>
       <span class="mx-2"
@@ -13,7 +13,7 @@
       <span><%= moment(post.createdAt).format('hh:mm a') %></span>
     </div>
     <h2 class="my-3 text-center"><%= post.title %></h2>
-    <p class="my-3"><%- post.description %></p>
+    <div class="my-3 desc"><%- post.description %></div>
     <div class="social my-4">
       <h4 class="mb-3">Share on</h4>
       <a href="https://twitter.com/intent/tweet?url=<%= url %>" target="_blank"

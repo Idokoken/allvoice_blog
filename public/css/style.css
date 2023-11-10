@@ -244,13 +244,18 @@ main .singlepost h2{
   font-weight: 700;
   color: var(--primary-color);
 }
-main .singlepost p{
+main .singlepost .desc{
   line-height: 2.0;
   font-family: 'Times New Roman', Times, serif;
   /* letter-spacing: 5px; */
   word-spacing: 5px;
   font-size: 20px;
-
+}
+main .singlepost .desc ul li, main .singlepost .desc ol li{
+  line-height: 1.6;
+  font-family: 'Times New Roman', Times, serif;
+  word-spacing: 5px;
+  font-size: 20px;
 }
 
 /* contact page */
