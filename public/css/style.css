@@ -83,6 +83,7 @@ main {
 }
 .posts .content a .title .name{
   display: flex;
+  font-size: 12px;
   /* position: absolute;
   bottom: 0; */
 }
@@ -103,7 +104,7 @@ main .home {
  margin: 0;
 }
 main .home h2{
-  font-weight: 500;
+  font-weight: 400;
   margin: 20px 10px;
   font-family: 'Lobster', cursive;
   color: var(--primary-color);
@@ -126,8 +127,7 @@ main .home .featured .content{
 main .home .featured .content .img-container{
   height: 100%;
   width: 100%;
-  border-radius: 10px;
-  
+  border-radius: 10px;  
 }
 main .home .featured .content img{
    height: 100%;
@@ -139,7 +139,7 @@ main .home .featured .content h3{
   position: absolute;
   top: 60%;
   left: 50%;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: 700;
   font-style: italic;
   transform: translate(-50%, -50%);
@@ -149,8 +149,9 @@ main .home .featured .content h3{
   -webkit-text-stroke: 2px black;
 }
 main .home .featured .content a .name{
+  font-size: 12px;
   position: absolute;
-  bottom: 20px;
+  bottom: 10px;
   left: 20px;
   display: flex;
   color: var(--secondary-color);
@@ -159,7 +160,7 @@ main .home .featured .content a .desc {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 20%;
+  height: 15%;
   background: linear-gradient(180deg, rgba(30, 26, 26, 0) 0%, #1E1A1A 100%);
   border-radius: 0 0 10px 10px;
 }
@@ -211,7 +212,7 @@ main .home .more a{
 .allposts h2{
   font-family: 'Abril Fatface', cursive;
   color: var(--primary-color);
-  font-weight: 500;
+  font-weight: 400;
 }
 .allposts nav{
   display: flex;
@@ -245,17 +246,17 @@ main .singlepost h2{
   color: var(--primary-color);
 }
 main .singlepost .desc{
-  line-height: 2.0;
+  line-height: 1.6;
   font-family: 'Times New Roman', Times, serif;
   /* letter-spacing: 5px; */
   word-spacing: 5px;
-  font-size: 20px;
+  font-size: 18px;
 }
 main .singlepost .desc ul li, main .singlepost .desc ol li{
-  line-height: 1.6;
+  line-height: 1.4;
   font-family: 'Times New Roman', Times, serif;
   word-spacing: 5px;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 /* contact page */
@@ -297,7 +298,7 @@ main .singlepost .desc ul li, main .singlepost .desc ol li{
   margin-top: 30px;
   margin-bottom: 5px;
   font-family: 'Abril Fatface', cursive;
-  font-weight: 500;
+  font-weight: 400;
   color:  var(--primary-color);;
 }
 .about p{
@@ -349,11 +350,17 @@ main .singlepost .desc ul li, main .singlepost .desc ol li{
  .posts .content a .title h4{
   font-size: 21px;
 }
+.posts .content a .title .name{
+  font-size: 16px;
+}
  main .home .featured .content .img-container{
   border-radius: 30px;
   
 }
-
+main .home .featured .content a .name{
+  font-size: 16px;
+  bottom: 20px;
+}
 main .home .featured .content img{
    border-radius: 30px;
 }
@@ -363,6 +370,16 @@ main .home .featured .content a .desc {
 main .singlepost .img-container{
   width: 100%;
   height: 50vh;
+}
+main .singlepost .desc{
+  line-height: 2.0;
+  word-spacing: 5px;
+  font-size: 20px;
+}
+main .singlepost .desc ul li, main .singlepost .desc ol li{
+  line-height: 1.6;
+  word-spacing: 5px;
+  font-size: 20px;
 }
 }
   

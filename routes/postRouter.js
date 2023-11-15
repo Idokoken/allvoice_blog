@@ -102,7 +102,7 @@ postRouter
 postRouter.get("/:id", isLoggedIn, async (req, res) => {
   const fullUrl = req.protocol + "://" + req.get("host");
   const { id } = req.params;
-  const url = fullUrl + "/" + id;
+  const url = fullUrl + "/post/" + id;
   try {
     const user = req.user;
     const post = await Post.findById(req.params.id);
